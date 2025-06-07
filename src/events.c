@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:19:22 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/05/30 11:19:30 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/08 00:30:31 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,37 @@
 
 int	handle_key(int keycode, t_fractal *fractal)
 {
-	if (keycode == 65307)
+	if (keycode == 65307) // ESC
 		close_win(fractal);
-	else if (keycode == 65362)
+	else if (keycode == 65362) // seta cima
 		fractal->offset_y -= 0.1 * fractal->zoom;
-	else if (keycode == 65364)
+	else if (keycode == 65364) // seta baixo
 		fractal->offset_y += 0.1 * fractal->zoom;
-	else if (keycode == 65361)
+	else if (keycode == 65361) // seta esquerda
 		fractal->offset_x -= 0.1 * fractal->zoom;
-	else if (keycode == 65363)
+	else if (keycode == 65363) // seta direita
 		fractal->offset_x += 0.1 * fractal->zoom;
-	else if (keycode == 65451)
+	else if (keycode == 65451) // +
+		fractal->resolution_x += 100, fractal->resolution_y += 100;
+	else if (keycode == 65453 && fractal->resolution_x > 200)
+		fractal->resolution_x -= 100, fractal->resolution_y -= 100;
+	else if (keycode == 110) // n (iter++ )
 		fractal->max_iter += 10;
-	else if (keycode == 65453 && fractal->max_iter > 10)
+	else if (keycode == 107 && fractal->max_iter > 10) // k (iter-- )
 		fractal->max_iter -= 10;
-	else if (keycode >= 49 && keycode <= 54)
+	else if (keycode == 106) // j
+		fractal->type = 2;
+	else if (keycode == 109) // m
+		fractal->type = 1;
+	else if (keycode == 98) // b
+		fractal->type = 3;
+	else if (keycode >= 49 && keycode <= 54) // teclas 1 a 6 para cores
 		fractal->color_scheme = keycode - 49;
 	render_fractal(fractal);
 	return (0);
 }
+
+
 
 int	handle_mouse(int button, int x, int y, t_fractal *fractal)
 {

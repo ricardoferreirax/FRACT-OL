@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/07 20:56:25 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/08 00:04:07 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ typedef struct s_fractal
 	void	*mlx;
 	void	*win;
 	void	*img;
+	int		res_height;
+	int		res_width;
+	int		resolution_y;
+	int		resolution_x;
 	char	*addr;
 	int		bpp;
 	int		line_length;
@@ -43,7 +47,6 @@ typedef struct s_fractal
 	int		max_iter;
 	double	julia_re;
 	double	julia_im;
-	double	phoenix_param;
 	int		color_scheme;
 }	t_fractal;
 
@@ -51,7 +54,7 @@ typedef struct s_fractal
 //fractals.c
 int	julia(t_complex z, t_complex c, int max_iter);
 int	mandelbrot(t_complex c, int max_iter);
-int	phoenix(t_complex c, int max_iter, double p);
+int	burning_ship(t_complex c, int max_iter);
 
 //init_fractal.c
 void	init_graphics(t_fractal *fractal);
@@ -68,6 +71,7 @@ void	render_fractal(t_fractal *fractal);
 //events.c
 int	handle_key(int keycode, t_fractal *fractal);
 int	handle_mouse(int button, int x, int y, t_fractal *fractal);
+void	adjust_arguments(t_fractal *fractal, int axis, int direction);
 
 //color.c
 int	color_blue_violet(double t);
@@ -91,5 +95,4 @@ void	*ft_memset(void *s, int c, size_t n);
 int	ft_strcmp(char *s1, char *s2);
 void	ft_putstr(char *s);
 double	ft_atof(char *str);
-
 #endif

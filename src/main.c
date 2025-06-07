@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/07 20:55:17 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/07 22:01:53 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void print_usage(void)
 	printf("Fractal types:\n");
 	printf("  mandelbrot\n");
 	printf("  julia <c_real> <c_imag>\n");
-	printf("  phoenix <c_real> <c_imag> <p>\n");
+	printf("  burning_ship\n");
 	printf("Examples:\n");
 	printf("  ./fractol mandelbrot\n");
 	printf("  ./fractol julia -0.4 0.6\n");
-	printf("  ./fractol phoenix -0.4 0.6 -0.5\n");
+	printf("  ./fractol burning_ship\n");
 }
 
 int	main(int argc, char **argv)
