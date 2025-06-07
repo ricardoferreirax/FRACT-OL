@@ -6,7 +6,7 @@
 #    By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/30 11:26:02 by rmedeiro          #+#    #+#              #
-#    Updated: 2025/05/30 12:03:35 by rmedeiro         ###   ########.fr        #
+#    Updated: 2025/06/07 20:53:40 by rmedeiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ MLX_DIR = minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
 
 NAME 	= 	fractol
-SRCS 	= 	src/fractol.c src/mandelbrot.c src/julia.c \
-       		src/render.c src/events.c src/utils.c src/hooks.c \
+SRCS 	= 	src/main.c src/fractals.c src/hooks.c \
+       		src/render.c src/events.c src/utils.c \
 	   		src/color.c src/init_fractal.c src/libft_utils.c
 
 OBJS = $(SRCS:.c=.o)

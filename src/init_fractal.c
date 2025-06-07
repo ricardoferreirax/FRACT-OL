@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:17:33 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/05/30 11:53:43 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:43:02 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,52 @@ void	init_graphics(t_fractal *fractal)
 	fractal->max_iter = 50;
 }
 
-void	init_fractal_type(t_fractal *fractal, char *name)
+void	init_fractal_type(t_fractal *fractal, int argc, char **argv)
 {
-	if (!ft_strcmp(name, "mandelbrot"))
+	if (!ft_strcmp(argv[1], "mandelbrot"))
 		fractal->type = 1;
-	else if (!ft_strcmp(name, "julia"))
+	else if (!ft_strcmp(argv[1], "julia") && argc == 4)
 	{
 		fractal->type = 2;
-		fractal->julia_re = 0.285;
-		fractal->julia_im = 0.013;
+		fractal->julia_re = ft_atof(argv[2]);
+		fractal->julia_im = ft_atof(argv[3]);
 	}
-	else if (!ft_strcmp(name, "burning_ship"))
+	else if (!ft_strcmp(argv[1], "phoenix") && argc == 5)
+	{
 		fractal->type = 3;
+		fractal->julia_re = ft_atof(argv[2]);
+		fractal->julia_im = ft_atof(argv[3]);
+		fractal->phoenix_param = ft_atof(argv[4]);
+	}
 	else
 	{
-		free_fractal(fractal);
-		ft_putstr("Usage: ./fractol mandelbrot | julia | burning_ship\n");
+		ft_putstr("Error: Invalid fractal type or parameters\n");
+		print_usage();
 		exit(1);
 	}
-
 }
 
-void	init_fractal(t_fractal *fractal, char *name)
+void	init_fractal(t_fractal *fractal, int argc, char **argv)
 {
 	init_graphics(fractal);
 	if (!fractal->mlx)
 		return ;
-	init_fractal_type(fractal, name);
+	init_fractal_type(fractal, argc, argv);
+}
+
+int	validate_args(int argc, char **argv)
+{
+	if (argc < 2)
+	{
+		ft_putstr("Error: No fractal type provided\n");
+		return (0);
+	}
+	if (!ft_strcmp(argv[1], "mandelbrot") && argc == 2)
+		return (1);
+	if (!ft_strcmp(argv[1], "julia") && argc == 4)
+		return (1);
+	if (!ft_strcmp(argv[1], "phoenix") && argc == 5)
+		return (1);
+	ft_putstr("Error: Invalid arguments\n");
+	return (0);
 }

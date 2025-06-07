@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:24:04 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/05/30 11:35:06 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:29:11 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,4 @@ int	color_rainbow(int iteration)
 	b = (int)(sin(0.16 * iteration) * 127 + 128);
 	return (r << 16 | g << 8 | b);
 }
+

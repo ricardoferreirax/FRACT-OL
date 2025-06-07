@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/05/30 11:48:01 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:41:40 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	compute_iteration(t_complex c, t_fractal *fractal)
 		julia_c.im = fractal->julia_im;
 		return (julia(c, julia_c, fractal->max_iter));
 	}
-	return (0);
+	return (phoenix(c, fractal->max_iter, fractal->phoenix_param));
 }
 
 void	render_fractal(t_fractal *fractal)
