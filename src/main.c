@@ -6,24 +6,31 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/08 08:49:32 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/08 10:02:59 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 #include <stdio.h>
 
-void print_usage(void)
+void	print_usage(void)
 {
-	printf("Usage: ./fractol <fractal_type> [params]\n");
-	printf("Fractal types:\n");
-	printf("  mandelbrot\n");
-	printf("  julia <c_real> <c_imag>\n");
-	printf("  burning_ship\n");
-	printf("Examples:\n");
-	printf("  ./fractol mandelbrot\n");
-	printf("  ./fractol julia -0.4 0.6\n");
-	printf("  ./fractol burning_ship\n");
+	ft_putstr("Usage: ./fractol <fractal_type> [params]\n");
+	ft_putstr("Fractal types:\n");
+	ft_putstr("  mandelbrot\n");
+	ft_putstr("  julia <c_real> <c_imag>\n");
+	ft_putstr("  burning_ship\n");
+	ft_putstr("Examples:\n");
+	ft_putstr("  ./fractol mandelbrot\n");
+	ft_putstr("  ./fractol burning_ship\n");
+	ft_putstr("  ./fractol julia -0.4 0.6\n");
+	ft_putstr("  ./fractol julia 0.355 0.355\n");
+	ft_putstr("  ./fractol julia -0.70176 -0.3842\n");
+	ft_putstr("  ./fractol julia 0.285 0.013\n");
+	ft_putstr("  ./fractol julia -0.8 0.156\n");
+	ft_putstr("  ./fractol julia 0.37 -0.1\n");
+	ft_putstr("  ./fractol julia -0.7269 0.1889\n");
+	ft_putstr("  ./fractol julia -0.835 -0.2321\n");
 }
 
 int	main(int argc, char **argv)
