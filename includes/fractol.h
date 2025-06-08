@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/08 00:04:07 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/08 09:19:04 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 
 # define WIDTH 800
 # define HEIGHT 800
+
+# define PI2 6.28318530
+# define PI 3.141592653
 
 typedef struct s_complex
 {
@@ -52,47 +55,46 @@ typedef struct s_fractal
 
 
 //fractals.c
-int	julia(t_complex z, t_complex c, int max_iter);
-int	mandelbrot(t_complex c, int max_iter);
-int	burning_ship(t_complex c, int max_iter);
+int			julia(t_complex z, t_complex c, int max_iter);
+int			mandelbrot(t_complex c, int max_iter);
+int			burning_ship(t_complex c, int max_iter);
 
 //init_fractal.c
-void	init_graphics(t_fractal *fractal);
-void	init_fractal_type(t_fractal *fractal, int argc, char **argv);
-void	init_fractal(t_fractal *fractal, int argc, char **argv);
-int	validate_args(int argc, char **argv);
+void		init_graphics(t_fractal *fractal);
+void		init_fractal_type(t_fractal *fractal, int argc, char **argv);
+void		init_fractal(t_fractal *fractal, int argc, char **argv);
+int			validate_args(int argc, char **argv);
 
 //render.c
-void	put_pixel(t_fractal *fractal, int x, int y, int color);
+void		put_pixel(t_fractal *fractal, int x, int y, int color);
 t_complex	compute_complex(int x, int y, t_fractal *fractal);
-int	compute_iteration(t_complex c, t_fractal *fractal);
-void	render_fractal(t_fractal *fractal);
+int			compute_iteration(t_complex c, t_fractal *fractal);
+void		render_fractal(t_fractal *fractal);
 
 //events.c
-int	handle_key(int keycode, t_fractal *fractal);
-int	handle_mouse(int button, int x, int y, t_fractal *fractal);
-void	adjust_arguments(t_fractal *fractal, int axis, int direction);
+int			handle_key(int keycode, t_fractal *fractal);
+int			handle_mouse(int button, int x, int y, t_fractal *fractal);
+int			close_win(t_fractal *fractal);
 
 //color.c
-int	color_blue_violet(double t);
-int	color_red_yellow(double t);
-int	color_blue_gradient(double t);
-int	color_green_turquoise(double t);
-int	color_pink_white(double t);
+int			coloring(double i, t_fractal *fractal);
+int			bernstein_polynomials(double i, int version, int max_iter);
+int			cosine_coloring(double i, int version, int max_iter);
+int			color_rainbow(double i, int max_iter);
+int			get_colors(double i, t_fractal *fractal);
 
-//hooks.c
-int	close_win(t_fractal *fractal);
-void print_usage(void);
+//color_utils.c
+double		interpolation(double i, double min, double max, int max_iter);
+void		normalize_color_scheme(t_fractal *fractal);
 
-//utils.c
-int	create_trgb(int t, int r, int g, int b);
-void	free_fractal(t_fractal *fractal);
-int	color_rainbow(int iteration);
-int	get_colors(int iteration, t_fractal *fractal);
+//main.c
+void 		print_usage(void);
+void		free_fractal(t_fractal *fractal);
 
 //libft_utils.c
-void	*ft_memset(void *s, int c, size_t n);
-int	ft_strcmp(char *s1, char *s2);
-void	ft_putstr(char *s);
-double	ft_atof(char *str);
+void		*ft_memset(void *s, int c, size_t n);
+int			ft_strcmp(char *s1, char *s2);
+void		ft_putstr(char *s);
+double		ft_atof(char *str);
+
 #endif

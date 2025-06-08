@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/07 22:01:53 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/08 08:49:32 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,19 @@ int	main(int argc, char **argv)
 	mlx_hook(fractal.win, 17, 0, close_win, &fractal);
 	mlx_loop(fractal.mlx);
 	return (0);
+}
+
+void	free_fractal(t_fractal *fractal)
+{
+	if (!fractal)
+		return ;
+	if (fractal->img)
+		mlx_destroy_image(fractal->mlx, fractal->img);
+	if (fractal->win)
+		mlx_destroy_window(fractal->mlx, fractal->win);
+	if (fractal->mlx)
+	{
+		mlx_destroy_display(fractal->mlx);
+		free(fractal->mlx);
+	}
 }
