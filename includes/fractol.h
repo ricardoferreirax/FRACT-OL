@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/08 09:19:04 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:43:37 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,45 +53,29 @@ typedef struct s_fractal
 	int		color_scheme;
 }	t_fractal;
 
-
-//fractals.c
 int			julia(t_complex z, t_complex c, int max_iter);
 int			mandelbrot(t_complex c, int max_iter);
 int			burning_ship(t_complex c, int max_iter);
-
-//init_fractal.c
 void		init_graphics(t_fractal *fractal);
 void		init_fractal_type(t_fractal *fractal, int argc, char **argv);
 void		init_fractal(t_fractal *fractal, int argc, char **argv);
 int			validate_args(int argc, char **argv);
-
-//render.c
 void		put_pixel(t_fractal *fractal, int x, int y, int color);
 t_complex	compute_complex(int x, int y, t_fractal *fractal);
 int			compute_iteration(t_complex c, t_fractal *fractal);
 void		render_fractal(t_fractal *fractal);
-
-//events.c
 int			handle_key(int keycode, t_fractal *fractal);
 int			handle_mouse(int button, int x, int y, t_fractal *fractal);
 int			close_win(t_fractal *fractal);
-
-//color.c
 int			coloring(double i, t_fractal *fractal);
 int			bernstein_polynomials(double i, int version, int max_iter);
 int			cosine_coloring(double i, int version, int max_iter);
 int			color_rainbow(double i, int max_iter);
 int			get_colors(double i, t_fractal *fractal);
-
-//color_utils.c
 double		interpolation(double i, double min, double max, int max_iter);
 void		normalize_color_scheme(t_fractal *fractal);
-
-//main.c
-void 		print_usage(void);
+void		print_usage(void);
 void		free_fractal(t_fractal *fractal);
-
-//libft_utils.c
 void		*ft_memset(void *s, int c, size_t n);
 int			ft_strcmp(char *s1, char *s2);
 void		ft_putstr(char *s);

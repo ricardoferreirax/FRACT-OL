@@ -6,12 +6,29 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/08 10:02:59 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:47:58 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 #include <stdio.h>
+
+int	validate_args(int argc, char **argv)
+{
+	if (argc < 2)
+	{
+		ft_putstr("Error: No fractal type provided\n");
+		return (0);
+	}
+	if (!ft_strcmp(argv[1], "mandelbrot") && argc == 2)
+		return (1);
+	if (!ft_strcmp(argv[1], "julia") && argc == 4)
+		return (1);
+	if (!ft_strcmp(argv[1], "burning_ship") && argc == 2)
+		return (1);
+	ft_putstr("Error: Invalid arguments\n");
+	return (0);
+}
 
 void	print_usage(void)
 {
@@ -52,19 +69,4 @@ int	main(int argc, char **argv)
 	mlx_hook(fractal.win, 17, 0, close_win, &fractal);
 	mlx_loop(fractal.mlx);
 	return (0);
-}
-
-void	free_fractal(t_fractal *fractal)
-{
-	if (!fractal)
-		return ;
-	if (fractal->img)
-		mlx_destroy_image(fractal->mlx, fractal->img);
-	if (fractal->win)
-		mlx_destroy_window(fractal->mlx, fractal->win);
-	if (fractal->mlx)
-	{
-		mlx_destroy_display(fractal->mlx);
-		free(fractal->mlx);
-	}
 }

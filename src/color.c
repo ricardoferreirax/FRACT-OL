@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:18:53 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/08 09:11:19 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:44:18 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	coloring(double i, t_fractal *fractal)
 int	bernstein_polynomials(double i, int version, int max_iter)
 {
 	double	t;
-	int	r;
-	int g;
-	int b;
+	int		r;
+	int		g;
+	int		b;
 
 	t = i / max_iter;
 	if (version == 0)
@@ -52,9 +52,9 @@ int	bernstein_polynomials(double i, int version, int max_iter)
 int	cosine_coloring(double i, int version, int max_iter)
 {
 	double	t;
-	int	r;
-	int g;
-	int b;
+	int		r;
+	int		g;
+	int		b;
 
 	t = i / max_iter;
 	if (version == 0)

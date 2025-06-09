@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/08 00:32:00 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:54:23 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ t_complex	compute_complex(int x, int y, t_fractal *fractal)
 	c.im = (y - fractal->res_height / 2) * scale_y + fractal->offset_y;
 	return (c);
 }
-
 
 int	compute_iteration(t_complex c, t_fractal *fractal)
 {
@@ -77,4 +76,19 @@ void	render_fractal(t_fractal *fractal)
 		y++;
 	}
 	mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->img, 0, 0);
+}
+
+void	free_fractal(t_fractal *fractal)
+{
+	if (!fractal)
+		return ;
+	if (fractal->img)
+		mlx_destroy_image(fractal->mlx, fractal->img);
+	if (fractal->win)
+		mlx_destroy_window(fractal->mlx, fractal->win);
+	if (fractal->mlx)
+	{
+		mlx_destroy_display(fractal->mlx);
+		free(fractal->mlx);
+	}
 }

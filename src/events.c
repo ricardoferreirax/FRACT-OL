@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:19:22 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/08 09:18:51 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:53:20 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 int	handle_key(int keycode, t_fractal *fractal)
 {
-	if (keycode == 65307) // ESC
+	if (keycode == 65307)
 		close_win(fractal);
-	else if (keycode == 65362) // seta cima
+	else if (keycode == 65362)
 		fractal->offset_y -= 0.1 * fractal->zoom;
-	else if (keycode == 65364) // seta baixo
+	else if (keycode == 65364)
 		fractal->offset_y += 0.1 * fractal->zoom;
-	else if (keycode == 65361) // seta esquerda
+	else if (keycode == 65361)
 		fractal->offset_x -= 0.1 * fractal->zoom;
-	else if (keycode == 65363) // seta direita
+	else if (keycode == 65363)
 		fractal->offset_x += 0.1 * fractal->zoom;
-	else if (keycode == 110) // n (iter++ )
+	else if (keycode == 110)
 		fractal->max_iter += 10;
-	else if (keycode == 107 && fractal->max_iter > 10) // k (iter-- )
+	else if (keycode == 107 && fractal->max_iter > 10)
 		fractal->max_iter -= 10;
-	else if (keycode == 109) // m
+	else if (keycode == 109)
 		fractal->type = 1;
-	else if (keycode == 98) // b
+	else if (keycode == 98)
 		fractal->type = 3;
-	else if (keycode == 100) // D
+	else if (keycode == 100)
 		fractal->color_scheme++;
-	else if (keycode == 97)  // A
+	else if (keycode == 97)
 		fractal->color_scheme--;
 	normalize_color_scheme(fractal);
 	render_fractal(fractal);

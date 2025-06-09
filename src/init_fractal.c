@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:17:33 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/08 00:31:37 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:54:05 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	init_graphics(t_fractal *fractal)
 		return ;
 	fractal->res_width = WIDTH;
 	fractal->res_height = HEIGHT;
-
 	fractal->win = mlx_new_window(fractal->mlx, fractal->res_width,
 			fractal->res_height, "Fract-ol");
 	if (!fractal->win)
@@ -65,21 +64,4 @@ void	init_fractal(t_fractal *fractal, int argc, char **argv)
 	if (!fractal->mlx)
 		return ;
 	init_fractal_type(fractal, argc, argv);
-}
-
-int	validate_args(int argc, char **argv)
-{
-	if (argc < 2)
-	{
-		ft_putstr("Error: No fractal type provided\n");
-		return (0);
-	}
-	if (!ft_strcmp(argv[1], "mandelbrot") && argc == 2)
-		return (1);
-	if (!ft_strcmp(argv[1], "julia") && argc == 4)
-		return (1);
-	if (!ft_strcmp(argv[1], "burning_ship") && argc == 2)
-		return (1);
-	ft_putstr("Error: Invalid arguments\n");
-	return (0);
 }
