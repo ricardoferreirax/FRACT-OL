@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/09 09:43:37 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/13 09:27:41 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ typedef struct s_fractal
 	void	*img;
 	int		res_height;
 	int		res_width;
-	int		resolution_y;
-	int		resolution_x;
 	char	*addr;
 	int		bpp;
 	int		line_length;
