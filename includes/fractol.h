@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/01 12:42:54 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/01 12:56:57 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ typedef struct s_fractal
 
 int	        julia(t_fractal *fractal, double z_re, double z_im, int max_iter);
 void	    draw_julia(t_fractal *fractal);
-int			mandelbrot(t_complex c, int max_iter);
-int			burning_ship(t_complex c, int max_iter);
+int	        mandelbrot(double c_re, double c_im, int max_iter);
+void	    draw_mandelbrot(t_fractal *fractal);
+int	        burning_ship(double c_re, double c_im, int max_iter);
+void	    draw_burning_ship(t_fractal *fractal);
 void		init_graphics(t_fractal *fractal);
 void		init_fractal_type(t_fractal *fractal, int argc, char **argv);
 void		init_fractal(t_fractal *fractal, int argc, char **argv);
