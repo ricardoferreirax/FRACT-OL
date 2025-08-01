@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/01 11:57:41 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/01 12:37:14 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ typedef struct s_fractal
 	double	zoom;
 	double	offset_x;
 	double	offset_y;
+    double	c_re;
+	double	c_im;
+    int     x;
+    int     y;
 	int		max_iter;
 	double	julia_re;
 	double	julia_im;
