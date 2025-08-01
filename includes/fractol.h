@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/13 09:27:41 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:57:41 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void		free_fractal(t_fractal *fractal);
 void		*ft_memset(void *s, int c, size_t n);
 int			ft_strcmp(char *s1, char *s2);
 void		ft_putstr(char *s);
-double		ft_atof(char *str);
+double		ft_atof(const char *str);
 
 #endif

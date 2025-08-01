@@ -6,54 +6,43 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 09:41:48 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/09 09:41:58 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:57:02 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-char	*parse_integer_part(char *str, double *result, int *sign)
+int	ft_isdigit(int c)
 {
-	*sign = 1;
-	if (*str == '-')
-	{
-		*sign = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		*result = *result * 10.0 + (*str - '0');
-		str++;
-	}
-	return (str);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
-void	parse_fractional_part(char *str, double *fraction, int *decimal_places)
+double	ft_atof(const char *str)
 {
-	while (*str >= '0' && *str <= '9')
-	{
-		*fraction = *fraction * 10.0 + (*str - '0');
-		(*decimal_places)++;
-		str++;
-	}
-}
-
-double	ft_atof(char *str)
-{
-	double	result;
-	double	fraction;
 	int		sign;
-	int		decimal_places;
+	double	nmb;
+	int		power;
 
-	result = 0.0;
-	fraction = 0.0;
-	decimal_places = 0;
-	str = parse_integer_part(str, &result, &sign);
+	nmb = 0;
+	sign = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str++ == '-')
+			sign = -1;
+	}
+	while (ft_isdigit(*str))
+		nmb = nmb * 10 + (*str++ - '0');
 	if (*str == '.')
-		parse_fractional_part(str + 1, &fraction, &decimal_places);
-	while (decimal_places-- > 0)
-		fraction /= 10.0;
-	return (sign * (result + fraction));
+		str++;
+	power = 1;
+	while (ft_isdigit(*str))
+	{
+		nmb = nmb * 10 + (*str++ - '0');
+		power *= 10;
+	}
+	return (sign * nmb / power);
 }
