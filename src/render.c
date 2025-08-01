@@ -6,13 +6,13 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/01 15:52:38 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:54:23 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	ft_put_pixel(t_fractal *fractal, int x, int y, int color)
+void	put_pixel(t_fractal *fractal, int x, int y, int color)
 {
 	char	*dst;
 	int		offset;
