@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/01 12:37:14 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/01 12:42:54 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ typedef struct s_fractal
 	int		color_scheme;
 }	t_fractal;
 
-int			julia(t_complex z, t_complex c, int max_iter);
+int	        julia(t_fractal *fractal, double z_re, double z_im, int max_iter);
+void	    draw_julia(t_fractal *fractal);
 int			mandelbrot(t_complex c, int max_iter);
 int			burning_ship(t_complex c, int max_iter);
 void		init_graphics(t_fractal *fractal);
