@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 12:01:08 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/01 12:20:46 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/01 15:18:07 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,25 @@ void	print_usage(void)
     exit(EXIT_FAILURE);
 }
 
+void	error_function(void)
+{
+	write(STDOUT_FILENO, "Use: ./fractol <fractal_name> [julia_params]", 47);
+	write(STDOUT_FILENO, "\nAvailable fractals:\n", 22);
+	write(STDOUT_FILENO, "  mandelbrot\n", 13);
+	write(STDOUT_FILENO, "  burning_ship\n", 15);
+	write(STDOUT_FILENO, "  julia <r> <i> (between -2.0 and 2.0)\n", 40);
+	write(STDOUT_FILENO, "    Example: ./fractol julia 0.285 0.01\n", 39);
+	exit(EXIT_FAILURE);
+}
+
 void	check_arguments(t_fractal *fractal, int ac, char **av)
 {
 	if (ac < 4)
 		error_function();
-	fractal->cr = atof(av[2]);
-	fractal->ci = atof(av[3]);
-	if (fractal->cr < -2.0 || fractal->cr > 2.0
-		|| fractal->ci < -2.0 || fractal->ci > 2.0)
+	fractal->c_re = atof(av[2]);
+	fractal->c_im = atof(av[3]);
+	if (fractal->c_re < -2.0 || fractal->c_re > 2.0
+		|| fractal->c_im < -2.0 || fractal->c_im > 2.0)
 		error_function();
 }
 
@@ -58,10 +69,7 @@ void	ft_parse(t_fractal *fractal, int ac, char **av)
 	if (!name)
 		error_function();
     if (ac < 2)
-	{
-		ft_putstr("Error: No fractal type provided\n");
-		return (0);
-	}
+		error_function()
 	if (ft_strncmp(name, "mandelbrot", 11) == 0 && ac == 2)
 		fractal->type = 0;
 	else if (ft_strncmp(name, "julia", 6) == 0)
@@ -74,3 +82,34 @@ void	ft_parse(t_fractal *fractal, int ac, char **av)
 	else
 		error_function();
 }
+
+/* void	check_args(int ac, char **av)
+{
+	if (ac < 2 || ac > 4)
+	{
+		ft_putstr("Error ! Invalid arguments\n");
+		ft_putstr("Use: ./fractol [mandelbrot, julia, ship]\n");
+		exit(1);
+	}
+	if (ft_strcmp(argv[1], "mandelbrot") != 0 
+        && ft_strcmp(argv[1], "julia") != 0 
+        && ft_strcmp(argv[1], "ship") != 0)
+	{
+		ft_putstr("Error ! Invalid fractal\n");
+		ft_putstr("Use: ./fractol [mandelbrot, julia, ship]\n");
+		exit(1);
+	}
+	if (ft_strcmp(argv[1], "julia") != 0 && argc != 2)
+	{
+		ft_printf("Error ! Invalid arguments\n");
+		ft_printf("Use: ./fractol [mandelbrot, julia, ship]\n");
+		exit(1);
+	}
+	if (ft_strcmp(argv[1], "julia") == 0 
+        && (argc != 4 && argc != 2))
+	{
+		ft_printf("Error ! Invalid julia arguments\n");
+		ft_printf("Use: ./fractol julia <c_real> <c_imag>\n");
+		exit(1);
+	}
+} */

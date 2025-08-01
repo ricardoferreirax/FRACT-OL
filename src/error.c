@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/01 15:54:31 by rmedeiro         ###   ########.fr       */
+/*   Created: 2025/08/01 15:48:33 by rmedeiro          #+#    #+#             */
+/*   Updated: 2025/08/01 15:50:56 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	main(int argc, char **argv)
+int	exit_fractol(t_fractal *fractal, int errno)
 {
-	t_fractal	fractal;
+	if (fractal->img)
+		mlx_destroy_image(img->mlx, img->img);
+	if (fractal->mlx_win)
+		mlx_destroy_window(img->mlx, img->mlx_win);
+	if (fractal->mlx)
+	{
+		free(fractal->mlx);
+		fractal->mlx = NULL;
+	}
+	if (fractal)
+	{
+		free(fractal);
+		fractal = NULL;
+	}
+	exit(errno);
+	return (0);
+}
 
-	ft_parse(&fractal, ac, av);
-	ft_memset(&fractal, 0, sizeof(t_fractal));
-	init_fractol(&fractal, argc, argv);
-	if (!fractal.mlx)
-		return (1);
-	render_fractal(&fractal);
-	mlx_key_hook(fractal.win, handle_key, &fractal);
-	mlx_mouse_hook(fractal.win, handle_mouse, &fractal);
-	mlx_hook(fractal.win, 17, 0, close_win, &fractal);
-	mlx_loop(fractal.mlx);
+int	ft_error(t_fractal *fractal, int errno)
+{
+	perror("fractol: ");
+	exit_fractol(fractal, errno);
 	return (0);
 }

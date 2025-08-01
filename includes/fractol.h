@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/01 12:56:57 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/01 15:53:40 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,10 @@
 # define PI2 6.28318530
 # define PI 3.141592653
 
-typedef struct s_complex
-{
-	double	re;
-	double	im;
-}	t_complex;
-
 typedef struct s_fractal
 {
 	void	*mlx;
-	void	*win;
+	void	*mlx_win;
 	void	*img;
 	int		res_height;
 	int		res_width;
@@ -61,11 +55,9 @@ int	        mandelbrot(double c_re, double c_im, int max_iter);
 void	    draw_mandelbrot(t_fractal *fractal);
 int	        burning_ship(double c_re, double c_im, int max_iter);
 void	    draw_burning_ship(t_fractal *fractal);
-void		init_graphics(t_fractal *fractal);
+t_fractal	*init_fractol(t_fractal *fractal);
 void		init_fractal_type(t_fractal *fractal, int argc, char **argv);
-void		init_fractal(t_fractal *fractal, int argc, char **argv);
-int			validate_args(int argc, char **argv);
-void		put_pixel(t_fractal *fractal, int x, int y, int color);
+void		ft_put_pixel(t_fractal *fractal, int x, int y, int color);
 t_complex	compute_complex(int x, int y, t_fractal *fractal);
 int			compute_iteration(t_complex c, t_fractal *fractal);
 void		render_fractal(t_fractal *fractal);
@@ -85,5 +77,7 @@ void		*ft_memset(void *s, int c, size_t n);
 int			ft_strcmp(char *s1, char *s2);
 void		ft_putstr(char *s);
 double		ft_atof(const char *str);
+int	        exit_fractol(t_fractal *fractal, int errno);
+int	        ft_error(t_fractal *fractal, int errno);
 
 #endif
