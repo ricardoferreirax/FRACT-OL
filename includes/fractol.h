@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/02 11:32:48 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/02 11:58:49 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			julia(t_complex z, t_complex c, int max_iter);
 int			mandelbrot(t_complex c, int max_iter);
 int			burning_ship(t_complex c, int max_iter);
 void		init_graphics(t_fractal *fractal);
-void		init_fractal_type(t_fractal *fractal, int argc, char **argv);
+void	    ft_parse_args(t_fractal *fractal, int ac, char **av);
 void		init_fractal(t_fractal *fractal, int argc, char **argv);
 int			validate_args(int argc, char **argv);
 void		put_pixel(t_fractal *fractal, int x, int y, int color);
@@ -78,5 +78,7 @@ void		*ft_memset(void *s, int c, size_t n);
 int			ft_strcmp(char *s1, char *s2);
 void		ft_putstr(char *s);
 double	    ft_atof(const char *str);
+void	    check_arguments(t_fractal *fractal, int ac, char **av);
+void	    error_function(void);
 
 #endif

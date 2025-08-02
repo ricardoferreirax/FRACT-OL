@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:17:33 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/09 09:54:05 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/02 11:56:43 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,10 @@ void	init_graphics(t_fractal *fractal)
 	fractal->color_scheme = 0;
 }
 
-void	init_fractal_type(t_fractal *fractal, int argc, char **argv)
-{
-	if (!ft_strcmp(argv[1], "mandelbrot"))
-		fractal->type = 1;
-	else if (!ft_strcmp(argv[1], "julia") && argc == 4)
-	{
-		fractal->type = 2;
-		fractal->julia_re = ft_atof(argv[2]);
-		fractal->julia_im = ft_atof(argv[3]);
-	}
-	else if (!ft_strcmp(argv[1], "burning_ship") && argc == 2)
-	{
-		fractal->type = 3;
-	}
-	else
-	{
-		ft_putstr("Error: Invalid fractal type or parameters\n");
-		print_usage();
-		exit(1);
-	}
-}
-
 void	init_fractal(t_fractal *fractal, int argc, char **argv)
 {
 	init_graphics(fractal);
 	if (!fractal->mlx)
 		return ;
-	init_fractal_type(fractal, argc, argv);
+	ft_parse_args(fractal, argc, argv);
 }
