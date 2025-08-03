@@ -6,36 +6,54 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 09:41:48 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/02 11:32:21 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:41:58 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-double	ft_atof(const char *str)
+char	*parse_integer_part(char *str, double *result, int *sign)
 {
-	int		sign;
-	double	nmb;
-	int		power;
+	*sign = 1;
+	if (*str == '-')
+	{
+		*sign = -1;
+		str++;
+	}
+	else if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		*result = *result * 10.0 + (*str - '0');
+		str++;
+	}
+	return (str);
+}
 
-	nmb = 0;
-	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (*str == '-' || *str == '+')
+void	parse_fractional_part(char *str, double *fraction, int *decimal_places)
+{
+	while (*str >= '0' && *str <= '9')
 	{
-		if (*str++ == '-')
-			sign = -1;
+		*fraction = *fraction * 10.0 + (*str - '0');
+		(*decimal_places)++;
+		str++;
 	}
-	while (ft_isdigit(*str))
-		nmb = nmb * 10 + (*str++ - '0');
+}
+
+double	ft_atof(char *str)
+{
+	double	result;
+	double	fraction;
+	int		sign;
+	int		decimal_places;
+
+	result = 0.0;
+	fraction = 0.0;
+	decimal_places = 0;
+	str = parse_integer_part(str, &result, &sign);
 	if (*str == '.')
-		str++;
-	power = 1;
-	while (ft_isdigit(*str))
-	{
-		nmb = nmb * 10 + (*str++ - '0');
-		power *= 10;
-	}
-	return (sign * nmb / power);
+		parse_fractional_part(str + 1, &fraction, &decimal_places);
+	while (decimal_places-- > 0)
+		fraction /= 10.0;
+	return (sign * (result + fraction));
 }

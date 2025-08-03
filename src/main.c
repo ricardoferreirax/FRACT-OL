@@ -6,12 +6,29 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/02 12:03:21 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:47:58 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 #include <stdio.h>
+
+int	validate_args(int argc, char **argv)
+{
+	if (argc < 2)
+	{
+		ft_putstr("Error: No fractal type provided\n");
+		return (0);
+	}
+	if (!ft_strcmp(argv[1], "mandelbrot") && argc == 2)
+		return (1);
+	if (!ft_strcmp(argv[1], "julia") && argc == 4)
+		return (1);
+	if (!ft_strcmp(argv[1], "burning_ship") && argc == 2)
+		return (1);
+	ft_putstr("Error: Invalid arguments\n");
+	return (0);
+}
 
 void	print_usage(void)
 {
@@ -33,13 +50,17 @@ void	print_usage(void)
 	ft_putstr("  ./fractol julia -0.835 -0.2321\n");
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
 
-	ft_parse_args(&fractal, ac, av);
+	if (!validate_args(argc, argv))
+	{
+		print_usage();
+		return (1);
+	}
 	ft_memset(&fractal, 0, sizeof(t_fractal));
-	init_fractal(&fractal, ac, av);
+	init_fractal(&fractal, argc, argv);
 	if (!fractal.mlx)
 		return (1);
 	render_fractal(&fractal);
