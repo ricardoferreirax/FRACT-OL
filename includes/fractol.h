@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/03 20:22:06 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/13 09:27:41 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			validate_args(int argc, char **argv);
 void		put_pixel(t_fractal *fractal, int x, int y, int color);
 t_complex	compute_complex(int x, int y, t_fractal *fractal);
 int			compute_iteration(t_complex c, t_fractal *fractal);
-void	    draw_fractal(t_fractal *fractal);
+void		render_fractal(t_fractal *fractal);
 int			handle_key(int keycode, t_fractal *fractal);
 int			handle_mouse(int button, int x, int y, t_fractal *fractal);
 int			close_win(t_fractal *fractal);

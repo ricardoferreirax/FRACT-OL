@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/03 19:29:29 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:47:58 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	init_fractal(&fractal, argc, argv);
 	if (!fractal.mlx)
 		return (1);
-	draw_fractal(&fractal);
+	render_fractal(&fractal);
 	mlx_key_hook(fractal.win, handle_key, &fractal);
 	mlx_mouse_hook(fractal.win, handle_mouse, &fractal);
 	mlx_hook(fractal.win, 17, 0, close_win, &fractal);

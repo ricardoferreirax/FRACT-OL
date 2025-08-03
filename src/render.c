@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/03 19:26:45 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:54:23 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,27 @@ int	compute_iteration(t_complex c, t_fractal *fractal)
 	return (0);
 }
 
-void	draw_fractal(t_fractal *fractal)
+void	render_fractal(t_fractal *fractal)
 {
-	if (fractal->type == 1)
-		draw_mandelbrot(fractal);
-	else if (fractal->type == 2)
-		draw_julia(fractal);
-	else if (fractal->type == 3)
-		draw_burning_ship(fractal);
+	int			x;
+	int			y;
+	t_complex	c;
+	int			iter;
+
+	y = 0;
+	while (y < fractal->res_height)
+	{
+		x = 0;
+		while (x < fractal->res_width)
+		{
+			c = compute_complex(x, y, fractal);
+			iter = compute_iteration(c, fractal);
+			put_pixel(fractal, x, y, get_colors(iter, fractal));
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->img, 0, 0);
 }
 
 void	free_fractal(t_fractal *fractal)
