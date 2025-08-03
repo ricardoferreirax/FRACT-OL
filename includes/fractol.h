@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/03 19:34:36 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/03 20:22:06 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,17 @@ typedef struct s_complex
 	double	im;
 }	t_complex;
 
-typedef struct s_img
-{
-    void *img;
-    char *addr;
-    int bpp;
-    int line_length;
-    int endian;
-}   t_img;
-
 typedef struct s_fractal
 {
 	void	*mlx;
 	void	*win;
-    t_img   img;
+	void	*img;
 	int		res_height;
 	int		res_width;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
 	int		type;
 	double	zoom;
 	double	offset_x;
