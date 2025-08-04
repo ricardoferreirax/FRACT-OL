@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:33:10 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:36:30 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:36:36 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,12 @@ int	phoenix(t_complex z, t_complex p, t_complex c, int c_max_iter)
 		i++;
 	}
 	return (i);
+}
+
+void	set_default_phoenix(t_fractol *f)
+{
+	f->pv.p.re = -0.5667;
+	f->pv.p.im = 0.0;
+	f->pv.c.re = -0.5;
+	f->pv.c.im = 0.5;
 }

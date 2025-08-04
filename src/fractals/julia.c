@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:53:58 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:36:50 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:36:45 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,10 @@ int	julia(t_complex c, t_complex z, int c_max_iter)
 		i++;
 	}
 	return (i);
+}
+
+void	set_default_julia(t_fractol *f)
+{
+	f->julia_re = -0.8;
+	f->julia_im = 0.156;
 }

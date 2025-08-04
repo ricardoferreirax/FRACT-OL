@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 22:15:07 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:41:04 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,9 @@ int			mandelbrot(t_complex c, int c_max_iter);
 int			julia(t_complex c, t_complex z, int c_max_iter);
 int			burning_ship(t_complex c, int c_max_iter);
 int			phoenix(t_complex z, t_complex k, t_complex c, int c_max_iter);
+
+void	    set_default_phoenix(t_fractol *f);
+void	    set_default_julia(t_fractol *f);
 
 /* Palettes */
 int			poli_gradiant(int iter, int max_iter);

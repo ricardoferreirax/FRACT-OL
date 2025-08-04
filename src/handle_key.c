@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 22:01:59 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 22:12:32 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:37:13 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,16 @@ static void	handle_fractal_keys(int keycode, t_fractol *f)
 		f->type = "mandelbrot";
 	}
 	else if (keycode == KEY_J)
-	{
-		ft_putstr("Switched to Julia\n");
-		f->type = "julia";
-	}
+    {
+	    ft_putstr("Switched to Julia\n");
+	    f->type = "julia";
+	    set_default_julia(f);
+    }
 	else if (keycode == KEY_P)
 	{
 		ft_putstr("Switched to Phoenix\n");
-		f->type = "phoenix";
+	    f->type = "phoenix";
+	    set_default_phoenix(f);
 	}
 }
 
