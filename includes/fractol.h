@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 21:51:05 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:15:07 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@
 # define MOUSE_WHEEL_DOWN 5
 # define KEY_C 99
 # define KEY_H 104
+# define KEY_B 98
+# define KEY_M 109
+# define KEY_J 106
+# define KEY_P 112
+# define KEY_I 105
+# define KEY_R 114
+# define KEY_O 111
 
 /* Cleanup Linux */
 #ifdef __linux__
@@ -139,7 +146,7 @@ void	    my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int	        get_fractal_iterations(t_fractol *f, t_complex *p);
 
 void		handle_close(t_fractol *f);
-void		handle_key(int keycode, t_fractol *f);
+int	        handle_key(int keycode, t_fractol *f);
 void		handle_mouse_key(int keycode, int x, int y, t_fractol *f);
 
 void	    check_input(t_fractol *f, int ac, char **av);
