@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 17:01:16 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 21:51:05 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <unistd.h>
+# include <stdio.h>
 
 # define WIDTH 800
 # define HEIGHT 800
@@ -48,13 +49,7 @@
 # define KEY_C 99
 # define KEY_H 104
 
-/* Libraries */
-# include "../minilibx-linux/mlx.h"
-# include <math.h>
-# include <stdio.h>
-# include <stdlib.h>
-
-/* Declaração da função que faz cleanup específico de Linux */
+/* Cleanup Linux */
 #ifdef __linux__
 void fractol_linux_cleanup(void *mlx);
 #else
@@ -140,7 +135,7 @@ void		init_image(t_fractol *f);
 void		render_fractal(t_fractol *f);
 void		exit_fractol(int errcode, t_fractol *f);
 void        free_fractol(t_fractol *f);
-void        my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	    my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int	        get_fractal_iterations(t_fractol *f, t_complex *p);
 
 void		handle_close(t_fractol *f);
