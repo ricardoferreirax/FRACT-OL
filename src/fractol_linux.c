@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fractol_linux.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:58:43 by rmedeiro         ###   ########.fr       */
+/*   Created: 2025/08/04 16:20:44 by rmedeiro          #+#    #+#             */
+/*   Updated: 2025/08/04 16:21:29 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-#include <stdio.h>
 
-int	main(int ac, char **av)
+#ifdef __linux__
+#include "mlx.h"
+
+void fractol_linux_cleanup(void *mlx)
 {
-	t_fractol	f;
-
-	init_defaults(&f);
-	check_input(&f, ac, av);
-	init_fractol(&f);
-	ft_printf("Program launched, press h for help\n");
-	render_fractal(&f);
-	mlx_key_hook(f.win, (int (*)())(void *)handle_key, &f);
-	mlx_mouse_hook(f.win, (int (*)())(void *)handle_mouse_key, &f);
-	mlx_hook(f.win, 17, 0, (int (*)())(void *)handle_close, &f);
-	mlx_loop(f.mlx);
-    return (0);
+    mlx_loop_end(mlx);
+    mlx_destroy_display(mlx);
 }
+#else
+void fractol_linux_cleanup(void *mlx)
+{
+    (void)mlx;
+}
+#endif

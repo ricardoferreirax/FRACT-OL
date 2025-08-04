@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:14:49 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:18:34 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
+
+/* Declaração da função que faz cleanup específico de Linux */
+#ifdef __linux__
+void fractol_linux_cleanup(void *mlx);
+#else
+static inline void fractol_linux_cleanup(void *mlx)
+{
+    (void)mlx; // função vazia em outras plataformas
+}
+#endif
 
 /* COLORS */
 # define BLACK   0xFF000000

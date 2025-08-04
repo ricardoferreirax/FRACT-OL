@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:17:33 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:51:52 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:58:22 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_image(t_fractol *f)
 	f->img = new_img;
 }
 
-void	init_graphics(t_fractol *f)
+void	init_fractol(t_fractol *f)
 {
 	f->mlx = mlx_init();
 	if (!f->mlx)

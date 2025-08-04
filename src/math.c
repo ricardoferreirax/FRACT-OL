@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:32:00 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:32:58 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:59:36 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,9 @@ double	ft_abs(double x)
 	if (x < 0)
 		return (-x);
 	return (x);
+}
+
+double	scale(double to_scale, double n_min, double n_max, double o_max)
+{
+	return (n_min + (n_max - n_min) * (to_scale - 0) / (o_max - 0));
 }
