@@ -6,23 +6,18 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 17:02:40 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:24:51 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	char *dst;
-	int offset;
+	int	offset;
 
-	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-	{
-		offset = (y * img->line_length) + (x * (img->bits_per_pixel / 8));
-		dst = img->addr + offset;
-		*(unsigned int *)dst = color;
-	}
+	offset = (y * img->line_length) + (x * (img->bits_per_pixel / 8));
+	*(unsigned int *)(img->addr + offset) = color;
 }
 
 int	get_fractal_iterations(t_fractol *f, t_complex *p)

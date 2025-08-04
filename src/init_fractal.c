@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:17:33 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:58:22 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:22:59 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_defaults(t_fractol *f)
 	f->win = NULL;
 	f->img.img = NULL;
 	f->type = NULL;
-	f->c_max_iter = 50;
+	f->c_max_iter = 0;
 	f->color_mode = 0;
 	f->color_table = NULL;
 	f->zoom = 1.0;
