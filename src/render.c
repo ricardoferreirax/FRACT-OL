@@ -6,89 +6,73 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/09 09:54:23 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:21:24 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	put_pixel(t_fractal *fractal, int x, int y, int color)
+void my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	char	*dst;
-	int		offset;
+	char *dst;
+	int offset;
 
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
-		offset = (y * fractal->line_length) + (x * (fractal->bpp / 8));
-		dst = fractal->addr + offset;
+		offset = (y * img->line_length) + (x * (img->bits_per_pixel / 8));
+		dst = img->addr + offset;
 		*(unsigned int *)dst = color;
 	}
 }
 
-t_complex	compute_complex(int x, int y, t_fractal *fractal)
+static int	get_fractal_iterations(t_fractol *f, t_complex *p)
 {
+	int			nb_iter;
 	t_complex	c;
-	double		scale_x;
-	double		scale_y;
 
-	scale_x = (4.0 / fractal->res_width) * fractal->zoom;
-	scale_y = (4.0 / fractal->res_height) * fractal->zoom;
-	c.re = (x - fractal->res_width / 2) * scale_x + fractal->offset_x;
-	c.im = (y - fractal->res_height / 2) * scale_y + fractal->offset_y;
-	return (c);
-}
-
-int	compute_iteration(t_complex c, t_fractal *fractal)
-{
-	t_complex	julia_c;
-
-	if (fractal->type == 1)
-		return (mandelbrot(c, fractal->max_iter));
-	else if (fractal->type == 2)
+	nb_iter = 0;
+	c.re = p->re;
+	c.im = p->im;
+	if (!ft_strncmp(f->type, "mandelbrot", 10))
+		nb_iter = mandelbrot(c, f->c_max_iter);
+	else if (!ft_strncmp(f->type, "julia", 5))
 	{
-		julia_c.re = fractal->julia_re;
-		julia_c.im = fractal->julia_im;
-		return (julia(c, julia_c, fractal->max_iter));
+		c.re = f->julia_re;
+		c.im = f->julia_im;
+		nb_iter = julia(c, *p, f->c_max_iter);
 	}
-	else if (fractal->type == 3)
-		return (burning_ship(c, fractal->max_iter));
-	return (0);
+	else if (!ft_strncmp(f->type, "burningship", 11))
+		nb_iter = burningship(c, f->c_max_iter);
+	else if (!ft_strncmp(f->type, "phoenix", 7))
+		nb_iter = phoenix(c, f->pv.p, f->pv.c, f->c_max_iter);
+	return (nb_iter);
 }
 
-void	render_fractal(t_fractal *fractal)
+void	render_fractal(t_fractol *f)
 {
 	int			x;
 	int			y;
-	t_complex	c;
-	int			iter;
+	int			nb_iter;
+	t_complex	p;
+	int			color;
 
-	y = 0;
-	while (y < fractal->res_height)
+	if (f->img.img)
+		mlx_destroy_image(f->mlx, f->img.img);
+	init_image(f);
+	y = -1;
+	while (++y < WIDTH)
 	{
-		x = 0;
-		while (x < fractal->res_width)
+		x = -1;
+		while (++x < HEIGHT)
 		{
-			c = compute_complex(x, y, fractal);
-			iter = compute_iteration(c, fractal);
-			put_pixel(fractal, x, y, get_colors(iter, fractal));
-			x++;
+			p.reel = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom
+					+ f->offset_x, WIDTH);
+			p.imag = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom
+					+ f->offset_y, HEIGHT);
+			nb_iter = get_fractal_iterations(f, &p);
+			color = colorize(nb_iter, f);
+			my_mlx_pixel_put(&f->img, x, y, color);
 		}
-		y++;
 	}
-	mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->img, 0, 0);
-}
-
-void	free_fractal(t_fractal *fractal)
-{
-	if (!fractal)
-		return ;
-	if (fractal->img)
-		mlx_destroy_image(fractal->mlx, fractal->img);
-	if (fractal->win)
-		mlx_destroy_window(fractal->mlx, fractal->win);
-	if (fractal->mlx)
-	{
-		mlx_destroy_display(fractal->mlx);
-		free(fractal->mlx);
-	}
+	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);
 }

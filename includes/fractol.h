@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/13 09:27:41 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:14:49 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,68 @@
 # define WIDTH 800
 # define HEIGHT 800
 
-# define PI2 6.28318530
-# define PI 3.141592653
+/* Misc */
+# define MAX_ITER 50
+# define ITER_TRESHOLD 310
+
+/* Err Codes */
+# define QUIT 0
+# define INPUT 1
+# define MALLOC 2
+
+/* Libraries */
+# include "../libft/includes/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
+
+/* COLORS */
+# define BLACK   0xFF000000
+
+typedef struct s_pixel
+{
+	double	x;
+	double	y;
+}			t_pixel;
 
 typedef struct s_complex
 {
 	double	re;
 	double	im;
-}	t_complex;
+}			t_complex;
 
-typedef struct s_fractal
+typedef struct s_phoenix
 {
-	void	*mlx;
-	void	*win;
+	t_complex	p;
+	t_complex	c;
+}				t_phoenix;
+
+typedef struct s_img
+{
 	void	*img;
-	int		res_height;
-	int		res_width;
 	char	*addr;
-	int		bpp;
+	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		type;
-	double	zoom;
-	double	offset_x;
-	double	offset_y;
-	int		max_iter;
-	double	julia_re;
-	double	julia_im;
-	int		color_scheme;
-}	t_fractal;
+}			t_img;
+
+typedef struct s_fractol
+{
+	void		*mlx;
+	void		*win;
+	t_img		img;
+	char		*type;
+	int			c_max_iter;
+	int			color_mode;
+	int			*color_table;
+	double		zoom;
+	double		offset_x;
+	double		offset_y;
+	double		julia_re;
+	double		julia_im;
+	t_phoenix	pv;
+}				t_fractol;
 
 int			julia(t_complex z, t_complex c, int max_iter);
 int			mandelbrot(t_complex c, int max_iter);
