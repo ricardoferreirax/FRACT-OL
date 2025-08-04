@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:21:24 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:41:33 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	render_fractal(t_fractol *f)
 		x = -1;
 		while (++x < HEIGHT)
 		{
-			p.reel = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom
+			p.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom
 					+ f->offset_x, WIDTH);
-			p.imag = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom
+			p.im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom
 					+ f->offset_y, HEIGHT);
 			nb_iter = get_fractal_iterations(f, &p);
 			color = colorize(nb_iter, f);

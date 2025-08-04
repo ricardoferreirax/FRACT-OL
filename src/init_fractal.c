@@ -6,62 +6,55 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:17:33 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/09 09:54:05 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:51:52 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	init_graphics(t_fractal *fractal)
+void	init_defaults(t_fractol *f)
 {
-	fractal->mlx = mlx_init();
-	if (!fractal->mlx)
-		return ;
-	fractal->res_width = WIDTH;
-	fractal->res_height = HEIGHT;
-	fractal->win = mlx_new_window(fractal->mlx, fractal->res_width,
-			fractal->res_height, "Fract-ol");
-	if (!fractal->win)
-		return ;
-	fractal->img = mlx_new_image(fractal->mlx, fractal->res_width,
-			fractal->res_height);
-	if (!fractal->img)
-		return ;
-	fractal->addr = mlx_get_data_addr(fractal->img, &fractal->bpp,
-			&fractal->line_length, &fractal->endian);
-	fractal->zoom = 1.0;
-	fractal->offset_x = 0;
-	fractal->offset_y = 0;
-	fractal->max_iter = 50;
-	fractal->color_scheme = 0;
+	f->mlx = NULL;
+	f->win = NULL;
+	f->img.img = NULL;
+	f->type = NULL;
+	f->c_max_iter = 50;
+	f->color_mode = 0;
+	f->color_table = NULL;
+	f->zoom = 1.0;
+	f->offset_x = 0;
+	f->offset_y = 0;
+	f->julia_re = 0;
+	f->julia_im = 0;
+	f->pv.p.re = 0;
+	f->pv.p.im = 0;
+	f->pv.c.re = 0;
+	f->pv.c.im = 0;
 }
 
-void	init_fractal_type(t_fractal *fractal, int argc, char **argv)
+void	init_image(t_fractol *f)
 {
-	if (!ft_strcmp(argv[1], "mandelbrot"))
-		fractal->type = 1;
-	else if (!ft_strcmp(argv[1], "julia") && argc == 4)
-	{
-		fractal->type = 2;
-		fractal->julia_re = ft_atof(argv[2]);
-		fractal->julia_im = ft_atof(argv[3]);
-	}
-	else if (!ft_strcmp(argv[1], "burning_ship") && argc == 2)
-	{
-		fractal->type = 3;
-	}
-	else
-	{
-		ft_putstr("Error: Invalid fractal type or parameters\n");
-		print_usage();
-		exit(1);
-	}
+	t_img	new_img;
+
+	new_img.img = mlx_new_image(f->mlx, WIDTH, HEIGHT);
+	if (!new_img.img)
+		exit_fractol(MALLOC, f);
+	new_img.addr = mlx_get_data_addr(new_img.img, &new_img.bits_per_pixel,
+			&new_img.line_length, &new_img.endian);
+	if (!new_img.addr)
+		exit_fractol(MALLOC, f);
+	f->img = new_img;
 }
 
-void	init_fractal(t_fractal *fractal, int argc, char **argv)
+void	init_graphics(t_fractol *f)
 {
-	init_graphics(fractal);
-	if (!fractal->mlx)
-		return ;
-	init_fractal_type(fractal, argc, argv);
+	f->mlx = mlx_init();
+	if (!f->mlx)
+		exit_fractol(MALLOC, f);
+	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, f->type);
+	if (!f->win)
+		exit_fractol(MALLOC, f);
+	f->c_max_iter = MAX_ITER;
+	f->zoom = 1;
+	update_color_table(f);
 }
