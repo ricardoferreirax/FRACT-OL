@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:55:11 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:57:29 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:02:16 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,54 @@ void	check_input(t_fractol *f, int ac, char **av)
 	else if (ac == 4 && !ft_strncmp(av[1], "julia", 5) && check_julia(av))
 	{
 		f->type = "julia";
-		f->julia_re = atof(av[2]);
-		f->julia_im = atof(av[3]);
+		f->julia_re = ft_atof(av[2]);
+		f->julia_im = ft_atof(av[3]);
 	}
 	else if (ac == 2 && !ft_strncmp(av[1], "burningship", 11))
 		f->type = "burningship";
 	else if (ac == 6 && !ft_strncmp(av[1], "phoenix", 7 && check_phoenix(av)))
 	{
 		f->type = "phoenix";
-		f->pv.k.reel = ft_atof(av[2]);
-		f->pv.k.imag = ft_atof(av[3]);
-		f->pv.c.reel = ft_atof(av[4]);
-		f->pv.c.imag = ft_atof(av[5]);
+		f->pv.p.re = ft_atof(av[2]);
+		f->pv.p.im = ft_atof(av[3]);
+		f->pv.c.re = ft_atof(av[4]);
+		f->pv.c.im = ft_atof(av[5]);
 	}
 	else
 		exit_fractol(INPUT, f);
+}
+
+static int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+double	ft_atof(const char *str)
+{
+	int		sign;
+	double	nmb;
+	int		power;
+
+	nmb = 0;
+	sign = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str++ == '-')
+			sign = -1;
+	}
+	while (ft_isdigit(*str))
+		nmb = nmb * 10 + (*str++ - '0');
+	if (*str == '.')
+		str++;
+	power = 1;
+	while (ft_isdigit(*str))
+	{
+		nmb = nmb * 10 + (*str++ - '0');
+		power *= 10;
+	}
+	return (sign * nmb / power);
 }

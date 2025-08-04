@@ -6,7 +6,7 @@
 #    By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/30 11:26:02 by rmedeiro          #+#    #+#              #
-#    Updated: 2025/08/04 15:39:19 by rmedeiro         ###   ########.fr        #
+#    Updated: 2025/08/04 16:45:06 by rmedeiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ MLX = $(MLX_DIR)/libmlx.a
 CFLAGS = -Wall -Wextra -Werror -g3
 LFLAGS = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 
-SRCS 	= 	src/main.c src/fractals/burning_ship.c src/fractals/julia.c \
-            src/fractals/mandelbrot.c src/fractals/phoenix.c src/atof.c \
-       		src/render.c src/events.c src/color_utils.c \
-	   		src/color.c src/init_fractal.c src/libft_utils.c
+SRCS 	= 	src/fractals/burning_ship.c src/fractals/julia.c src/parsing.c \
+            src/fractals/mandelbrot.c src/fractals/phoenix.c src/math.c \
+       		src/render.c src/events.c src/color_utils.c src/exit.c src/fractol_linux.c \
+	   		src/color.c src/init_fractal.c src/libft_utils.c src/fractol.c \
 
 OBJS = $(SRCS:.c=.o)
 

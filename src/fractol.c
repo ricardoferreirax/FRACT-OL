@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:58:43 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:05:50 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 	init_defaults(&f);
 	check_input(&f, ac, av);
 	init_fractol(&f);
-	ft_printf("Program launched, press h for help\n");
+	ft_putstr("Program launched, press h for help\n");
 	render_fractal(&f);
 	mlx_key_hook(f.win, (int (*)())(void *)handle_key, &f);
 	mlx_mouse_hook(f.win, (int (*)())(void *)handle_mouse_key, &f);

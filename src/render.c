@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:41:33 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:02:40 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	}
 }
 
-static int	get_fractal_iterations(t_fractol *f, t_complex *p)
+int	get_fractal_iterations(t_fractol *f, t_complex *p)
 {
 	int			nb_iter;
 	t_complex	c;
@@ -42,7 +42,7 @@ static int	get_fractal_iterations(t_fractol *f, t_complex *p)
 		nb_iter = julia(c, *p, f->c_max_iter);
 	}
 	else if (!ft_strncmp(f->type, "burningship", 11))
-		nb_iter = burningship(c, f->c_max_iter);
+		nb_iter = burning_ship(c, f->c_max_iter);
 	else if (!ft_strncmp(f->type, "phoenix", 7))
 		nb_iter = phoenix(c, f->pv.p, f->pv.c, f->c_max_iter);
 	return (nb_iter);

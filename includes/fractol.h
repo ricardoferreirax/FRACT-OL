@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 16:18:34 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:01:16 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,25 @@
 # define INPUT 1
 # define MALLOC 2
 
+/* KEYS */
+# define KEY_RED_CROSS 17
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_MINUS 45
+# define KEY_PLUS 61
+# define MOUSE_WHEEL_UP 4
+# define MOUSE_WHEEL_DOWN 5
+# define KEY_C 99
+# define KEY_H 104
+
 /* Libraries */
-# include "../libft/includes/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdio.h>
@@ -94,32 +111,46 @@ typedef struct s_fractol
 	t_phoenix	pv;
 }				t_fractol;
 
-int			julia(t_complex z, t_complex c, int max_iter);
-int			mandelbrot(t_complex c, int max_iter);
-int			burning_ship(t_complex c, int max_iter);
-void		init_graphics(t_fractal *fractal);
-void		init_fractal_type(t_fractal *fractal, int argc, char **argv);
-void		init_fractal(t_fractal *fractal, int argc, char **argv);
-int			validate_args(int argc, char **argv);
-void		put_pixel(t_fractal *fractal, int x, int y, int color);
-t_complex	compute_complex(int x, int y, t_fractal *fractal);
-int			compute_iteration(t_complex c, t_fractal *fractal);
-void		render_fractal(t_fractal *fractal);
-int			handle_key(int keycode, t_fractal *fractal);
-int			handle_mouse(int button, int x, int y, t_fractal *fractal);
-int			close_win(t_fractal *fractal);
-int			coloring(double i, t_fractal *fractal);
-int			bernstein_polynomials(double i, int version, int max_iter);
-int			cosine_coloring(double i, int version, int max_iter);
-int			color_rainbow(double i, int max_iter);
-int			get_colors(double i, t_fractal *fractal);
-double		interpolation(double i, double min, double max, int max_iter);
-void		normalize_color_scheme(t_fractal *fractal);
-void		print_usage(void);
-void		free_fractal(t_fractal *fractal);
-void		*ft_memset(void *s, int c, size_t n);
-int			ft_strcmp(char *s1, char *s2);
-void		ft_putstr(char *s);
-double		ft_atof(char *str);
+/* Maths */
+t_complex	c_add(t_complex a, t_complex b);
+t_complex	c_mult(t_complex a, t_complex b);
+double	    ft_abs(double x);
+double		scale(double to_scale, double n_min, double n_max, double o_max);
+
+/* Init */
+void	    init_defaults(t_fractol *f);
+void		init_fractol(t_fractol *f);
+
+/* Fractals */
+int			mandelbrot(t_complex c, int c_max_iter);
+int			julia(t_complex c, t_complex z, int c_max_iter);
+int			burning_ship(t_complex c, int c_max_iter);
+int			phoenix(t_complex z, t_complex k, t_complex c, int c_max_iter);
+
+/* Palettes */
+int			poli_gradiant(int iter, int max_iter);
+int			sin_tripy(int iter, int max_iter);
+int			fire_thing(int iter, int max_iter);
+int			purple_trip(int iter, int max_iter);
+
+int			colorize(int nb_iter, t_fractol *f);
+void		update_color_table(t_fractol *f);
+
+void		init_image(t_fractol *f);
+void		render_fractal(t_fractol *f);
+void		exit_fractol(int errcode, t_fractol *f);
+void        free_fractol(t_fractol *f);
+void        my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int	        get_fractal_iterations(t_fractol *f, t_complex *p);
+
+void		handle_close(t_fractol *f);
+void		handle_key(int keycode, t_fractol *f);
+void		handle_mouse_key(int keycode, int x, int y, t_fractol *f);
+
+void	    check_input(t_fractol *f, int ac, char **av);
+double	    ft_atof(const char *str);
+
+void	    ft_putstr(char *s);
+int	        ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

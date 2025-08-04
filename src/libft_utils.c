@@ -6,34 +6,27 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:34:55 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/09 09:46:03 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:46:54 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*ptr;
+	size_t			idx;
+	unsigned char	*tmp_s1;
+	unsigned char	*tmp_s2;
 
-	ptr = (unsigned char *)s;
-	while (n > 0)
-	{
-		*ptr = (unsigned char)c;
-		ptr++;
-		n--;
-	}
-	return (s);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
+	if (n == 0)
+		return (0);
+	tmp_s1 = (unsigned char *)s1;
+	tmp_s2 = (unsigned char *)s2;
+	idx = 0;
+	while (tmp_s1[idx] && tmp_s2[idx] && tmp_s1[idx] == tmp_s2[idx]
+		&& idx < n - 1)
+		idx++;
+	return (tmp_s1[idx] - tmp_s2[idx]);
 }
 
 void	ft_putstr(char *s)

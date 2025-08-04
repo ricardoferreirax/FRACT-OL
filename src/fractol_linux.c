@@ -6,14 +6,13 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:20:44 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 16:21:29 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:05:34 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
 #ifdef __linux__
-#include "mlx.h"
 
 void fractol_linux_cleanup(void *mlx)
 {

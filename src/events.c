@@ -6,71 +6,88 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:19:22 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/06/09 09:53:20 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:04:52 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	handle_key(int keycode, t_fractal *fractal)
+static void	handle_key_suite(int keycode, t_fractol *f)
 {
-	if (keycode == 65307)
-		close_win(fractal);
-	else if (keycode == 65362)
-		fractal->offset_y -= 0.1 * fractal->zoom;
-	else if (keycode == 65364)
-		fractal->offset_y += 0.1 * fractal->zoom;
-	else if (keycode == 65361)
-		fractal->offset_x -= 0.1 * fractal->zoom;
-	else if (keycode == 65363)
-		fractal->offset_x += 0.1 * fractal->zoom;
-	else if (keycode == 110)
-		fractal->max_iter += 10;
-	else if (keycode == 107 && fractal->max_iter > 10)
-		fractal->max_iter -= 10;
-	else if (keycode == 109)
-		fractal->type = 1;
-	else if (keycode == 98)
-		fractal->type = 3;
-	else if (keycode == 100)
-		fractal->color_scheme++;
-	else if (keycode == 97)
-		fractal->color_scheme--;
-	normalize_color_scheme(fractal);
-	render_fractal(fractal);
-	return (0);
+	if (keycode == KEY_MINUS)
+	{
+		if (f->c_max_iter > 0)
+		{
+			f->c_max_iter -= 10;
+			update_color_table(f);
+		}
+		else
+			ft_putstr("Minimum iterations reached !\n");
+	}
+	else if (keycode == KEY_C)
+	{
+		f->color_mode = (f->color_mode + 1) % 4;
+		update_color_table(f);
+	}
+	else if (keycode == KEY_H)
+		ft_putstr("\nCommands :\n - Zoom with mouse and move with \
+arrows or WASD\n\
+ - Press + and - to increase or decrease precision\n\
+ - Press c to change color\n - Press ESC to quit\n");
 }
 
-int	handle_mouse(int button, int x, int y, t_fractal *fractal)
+void	handle_key(int keycode, t_fractol *f)
 {
-	double	mouse_re;
-	double	mouse_im;
-	double	scale_x;
-	double	scale_y;
-
-	scale_x = (4.0 / WIDTH) * fractal->zoom;
-	scale_y = (4.0 / HEIGHT) * fractal->zoom;
-	mouse_re = (x - WIDTH / 2) * scale_x + fractal->offset_x;
-	mouse_im = (y - HEIGHT / 2) * scale_y + fractal->offset_y;
-	if (button == 4)
+	if (keycode == KEY_ESC)
+		exit_fractol(0, f);
+	else if (keycode == KEY_W || keycode == KEY_UP)
+		f->offset_y -= 0.4 * f->zoom;
+	else if (keycode == KEY_A || keycode == KEY_LEFT)
+		f->offset_x -= 0.4 * f->zoom;
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
+		f->offset_y += 0.4 * f->zoom;
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
+		f->offset_x += 0.4 * f->zoom;
+	else if (keycode == KEY_PLUS)
 	{
-		fractal->zoom *= 0.9;
-		fractal->offset_x = mouse_re - (mouse_re - fractal->offset_x) * 0.9;
-		fractal->offset_y = mouse_im - (mouse_im - fractal->offset_y) * 0.9;
+		if (f->c_max_iter < ITER_TRESHOLD)
+		{
+			f->c_max_iter += 10;
+			update_color_table(f);
+		}
+		else
+			ft_putstr("Maximum iterations reached !\n");
 	}
-	else if (button == 5)
-	{
-		fractal->zoom *= 1.1;
-		fractal->offset_x = mouse_re - (mouse_re - fractal->offset_x) * 1.1;
-		fractal->offset_y = mouse_im - (mouse_im - fractal->offset_y) * 1.1;
-	}
-	render_fractal(fractal);
-	return (0);
+	handle_key_suite(keycode, f);
+	render_fractal(f);
 }
 
-int	close_win(t_fractal *fractal)
+static void	zoom_at_point(int x, int y, double zoom_factor, t_fractol *f)
 {
-	free_fractal(fractal);
-	exit(0);
-	return (0);
+	double	re;
+	double	im;
+
+	re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom + f->offset_x,
+			WIDTH);
+	im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom + f->offset_y,
+			HEIGHT);
+	f->zoom *= zoom_factor;
+	f->offset_x = re - (re - f->offset_x) * zoom_factor;
+	f->offset_y = im - (im - f->offset_y) * zoom_factor;
+}
+
+void	handle_close(t_fractol *f)
+{
+	(void)f;
+	exit_fractol(0, f);
+}
+
+void	handle_mouse_key(int keycode, int x, int y, t_fractol *f)
+{
+	(void)x;
+	if (keycode == MOUSE_WHEEL_UP)
+		zoom_at_point(x, y, 0.8, f);
+	else if (keycode == MOUSE_WHEEL_DOWN)
+		zoom_at_point(x, y, 1.2, f);
+	render_fractal(f);
 }

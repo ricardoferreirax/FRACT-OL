@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:00:12 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 16:25:41 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:05:08 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void free_fractol(t_fractol *f)
     }
     if (f->color_table)
         free(f->color_table);
-    ft_printf("Program terminated successfully :) ");
+    ft_putstr("Program terminated successfully :) ");
     exit(0);
 }
 
