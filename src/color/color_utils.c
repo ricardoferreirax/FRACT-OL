@@ -6,11 +6,11 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 08:45:36 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 16:40:30 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:43:39 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../includes/fractol.h"
 
 void	update_color_table(t_fractol *f)
 {

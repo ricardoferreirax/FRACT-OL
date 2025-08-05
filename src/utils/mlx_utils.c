@@ -6,11 +6,11 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 21:11:08 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 21:49:21 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:50:26 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../includes/fractol.h"
 #include <X11/X.h>
 #include <X11/keysym.h>
 #include <../minilibx-linux/mlx.h>

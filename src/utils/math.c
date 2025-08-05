@@ -6,11 +6,11 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:32:00 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 15:59:36 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:52:41 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../includes/fractol.h"
 
 t_complex	c_add(t_complex a, t_complex b)
 {

@@ -6,11 +6,11 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:20:44 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 17:05:34 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:46:02 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../includes/fractol.h"
 
 #ifdef __linux__
 

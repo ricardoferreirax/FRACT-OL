@@ -6,11 +6,11 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:18:53 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 16:31:55 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:43:47 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../includes/fractol.h"
 
 int	poli_gradiant(int iter, int max_iter)
 {
