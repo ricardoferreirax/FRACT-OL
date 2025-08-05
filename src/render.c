@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 21:40:00 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/05 11:00:37 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ int	get_fractal_iterations(t_fractol *f, t_complex *p)
 	nb_iter = 0;
 	c.re = p->re;
 	c.im = p->im;
-	if (!ft_strncmp(f->type, "mandelbrot", 10))
+	if (ft_strcmp(f->type, "mandelbrot") == 0)
 		nb_iter = mandelbrot(c, f->c_max_iter);
-	else if (!ft_strncmp(f->type, "julia", 5))
+	else if (ft_strcmp(f->type, "julia") == 0)
 	{
 		c.re = f->julia_re;
 		c.im = f->julia_im;
 		nb_iter = julia(c, *p, f->c_max_iter);
 	}
-	else if (!ft_strncmp(f->type, "burningship", 11))
+	else if (ft_strcmp(f->type, "burningship") == 0)
 		nb_iter = burning_ship(c, f->c_max_iter);
-	else if (!ft_strncmp(f->type, "phoenix", 7))
+	else if (ft_strcmp(f->type, "phoenix") == 0)
 		nb_iter = phoenix(c, f->pv.p, f->pv.c, f->c_max_iter);
 	return (nb_iter);
 }

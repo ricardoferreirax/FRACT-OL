@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 22:41:04 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/05 10:59:41 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,6 @@ void	    check_input(t_fractol *f, int ac, char **av);
 double	    ft_atof(const char *str);
 
 void	    ft_putstr(char *s);
-int	        ft_strncmp(const char *s1, const char *s2, size_t n);
+int	        ft_strcmp(const char *s1, const char *s2);
 
 #endif
