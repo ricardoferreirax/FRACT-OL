@@ -6,70 +6,36 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:18:53 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 22:43:47 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/05 09:53:16 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fractol.h"
 
-int	poli_gradiant(int iter, int max_iter)
+void	update_color_table(t_fractol *f)
 {
-	int		r;
-	int		g;
-	int		b;
-	double	t;
+	int	i;
 
-	if (iter == max_iter)
-		return (0x000000);
-	t = (double)iter / max_iter;
-	r = (int)(9 * (1 - t) * t * t * t * 255);
-	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
-	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-	return ((r << 16) | (g << 8) | b);
-}
-
-int	sin_tripy(int iter, int max_iter)
-{
-	int	r;
-	int	g;
-	int	b;
-
-	if (iter == max_iter)
-		return (0x000000);
-	r = (int)(sin(0.1 * iter + 0) * 127 + 128);
-	g = (int)(sin(0.1 * iter + 2) * 127 + 128);
-	b = (int)(sin(0.1 * iter + 4) * 127 + 128);
-	return ((r << 16) | (g << 8) | b);
-}
-
-int	fire_thing(int iter, int max_iter)
-{
-	double	t;
-	int		r;
-	int		g;
-	int		b;
-
-	if (iter == max_iter)
-		return (0x000000);
-	t = (double)iter / max_iter;
-	r = (int)(t * 255);
-	g = (int)(t * t * 128);
-	b = (int)(t * t * t * 64);
-	return ((r << 16) | (g << 8) | b);
-}
-
-int	purple_trip(int iter, int max_iter)
-{
-	int	r;
-	int	g;
-	int	b;
-
-	if (iter == max_iter)
-		return (0x000000);
-	r = (int)(sin(0.1 * iter + 2.0) * 60 + 120);
-	g = 0;
-	b = (int)(sin(0.1 * iter + 0.5) * 60 + 155);
-	return ((r << 16) | (g << 8) | b);
+	i = 0;
+	if (f->color_table)
+		free(f->color_table);
+	f->color_table = malloc(sizeof(int) * (f->c_max_iter + 1));
+	if (!f->color_table)
+		exit_fractol(MALLOC, f);
+	while (i <= f->c_max_iter)
+	{
+		if (f->color_mode == 0)
+			f->color_table[i] = poli_gradiant(i, f->c_max_iter);
+		else if (f->color_mode == 1)
+			f->color_table[i] = sin_tripy(i, f->c_max_iter);
+		else if (f->color_mode == 2)
+			f->color_table[i] = fire_thing(i, f->c_max_iter);
+		else if (f->color_mode == 3)
+			f->color_table[i] = purple_trip(i, f->c_max_iter);
+		else
+			f->color_table[i] = BLACK;
+		i++;
+	}
 }
 
 int	colorize(int iter, t_fractol *f)
