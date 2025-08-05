@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   handle_mouse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:19:22 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 22:13:25 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/05 11:18:27 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,4 @@ void	handle_mouse_key(int keycode, int x, int y, t_fractol *f)
 	else if (keycode == MOUSE_WHEEL_DOWN)
 		zoom_at_point(x, y, 1.2, f);
 	render_fractal(f);
-}
-
-void	handle_close(t_fractol *f)
-{
-	(void)f;
-	exit_fractol(0, f);
 }
