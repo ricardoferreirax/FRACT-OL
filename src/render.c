@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/05 11:00:37 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:00:32 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	render_fractal(t_fractol *f)
 		mlx_destroy_image(f->mlx, f->img.img);
 	init_image(f);
 	y = -1;
-	while (++y < WIDTH)
+	while (++y < HEIGHT)
 	{
 		x = -1;
-		while (++x < HEIGHT)
+		while (++x < WIDTH)
 		{
 			p.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom
 					+ f->offset_x, WIDTH);

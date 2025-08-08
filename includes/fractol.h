@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/05 10:59:41 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:19:24 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,9 @@ void        free_fractol(t_fractol *f);
 void	    my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int	        get_fractal_iterations(t_fractol *f, t_complex *p);
 
-void		handle_close(t_fractol *f);
-int	        handle_key(int keycode, t_fractol *f);
-void		handle_mouse_key(int keycode, int x, int y, t_fractol *f);
+int		handle_close(void *param);
+int	        handle_key(int keycode, void *param);
+int		handle_mouse_key(int keycode, int x, int y, void *param);
 
 void	    check_input(t_fractol *f, int ac, char **av);
 double	    ft_atof(const char *str);

@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:19:22 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/05 11:18:27 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:19:54 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ void	zoom_at_point(int x, int y, double zoom_factor, t_fractol *f)
 	f->offset_y = mouse_im - (mouse_im - f->offset_y) * zoom_factor;
 }
 
-void	handle_mouse_key(int keycode, int x, int y, t_fractol *f)
+int	handle_mouse_key(int keycode, int x, int y, void *param)
 {
-	(void)x;
+    t_fractol *f;
+    
+    f = (t_fractol *)param;
 	if (keycode == MOUSE_WHEEL_UP)
 		zoom_at_point(x, y, 0.8, f);
 	else if (keycode == MOUSE_WHEEL_DOWN)
 		zoom_at_point(x, y, 1.2, f);
 	render_fractal(f);
+    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 22:01:59 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 22:37:13 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:15:36 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,11 @@ static void	handle_fractal_keys(int keycode, t_fractol *f)
 	}
 }
 
-int	handle_key(int keycode, t_fractol *f)
+int	handle_key(int keycode, void *param)
 {
+    t_fractol *f;
+
+    f = (t_fractol *)param;
 	if (keycode == KEY_ESC)
 		exit_fractol(QUIT, f);
 	else if (keycode == KEY_W || keycode == KEY_UP)
@@ -99,4 +102,3 @@ int	handle_key(int keycode, t_fractol *f)
 	render_fractal(f);
 	return (0);
 }
-
