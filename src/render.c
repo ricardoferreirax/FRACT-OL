@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 18:46:23 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 18:51:44 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int	get_fractal_iterations(t_fractol *f, t_complex *p)
 
 t_complex	ft_mapping(int x, int y, t_fractol *f)
 {
-	t_complex	p;
+	t_complex	c_point;
 
-	p.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom + f->offset_x, WIDTH);
-	p.im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom + f->offset_y, HEIGHT);
-	return (p);
+	c_point.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom + f->offset_x, WIDTH);
+	c_point.im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom + f->offset_y, HEIGHT);
+	return (c_point);
 }
 
 void	render_fractal(t_fractol *f)
@@ -62,7 +62,7 @@ void	render_fractal(t_fractol *f)
 	int			x;
 	int			y;
 	int			nb_iter;
-	t_complex	p;
+	t_complex	c_point;
 	int			color;
 
 	if (f->img.img)
@@ -74,12 +74,11 @@ void	render_fractal(t_fractol *f)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			p = ft_mapping(x, y, f);
-			nb_iter = get_fractal_iterations(f, &p);
+			c_point = ft_mapping(x, y, f);
+			nb_iter = get_fractal_iterations(f, &c_point);
 			color = colorize(nb_iter, f);
 			my_mlx_pixel_put(&f->img, x, y, color);
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);
 }
-
