@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 16:19:24 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 17:58:01 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define QUIT 0
 # define INPUT 1
 # define MALLOC 2
+# define MLX_FAIL 3
 
 /* KEYS */
 # define KEY_RED_CROSS 17
