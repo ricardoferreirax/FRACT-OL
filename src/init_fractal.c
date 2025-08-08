@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:17:33 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/04 19:22:59 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 18:15:31 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	init_image(t_fractol *f)
 
 	new_img.img = mlx_new_image(f->mlx, WIDTH, HEIGHT);
 	if (!new_img.img)
-		exit_fractol(MALLOC, f);
+		exit_fractol(MLX_FAIL, f);
 	new_img.addr = mlx_get_data_addr(new_img.img, &new_img.bits_per_pixel,
 			&new_img.line_length, &new_img.endian);
 	if (!new_img.addr)
-		exit_fractol(MALLOC, f);
+		exit_fractol(MLX_FAIL, f);
 	f->img = new_img;
 }
 
@@ -50,10 +50,10 @@ void	init_fractol(t_fractol *f)
 {
 	f->mlx = mlx_init();
 	if (!f->mlx)
-		exit_fractol(MALLOC, f);
+		exit_fractol(MLX_FAIL, f);
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, f->type);
 	if (!f->win)
-		exit_fractol(MALLOC, f);
+		exit_fractol(MLX_FAIL, f);
 	f->c_max_iter = MAX_ITER;
 	f->zoom = 1;
 	update_color_table(f);
