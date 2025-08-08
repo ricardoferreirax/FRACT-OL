@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 18:08:47 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 18:46:23 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ int	get_fractal_iterations(t_fractol *f, t_complex *p)
 	return (nb_iter);
 }
 
+t_complex	ft_mapping(int x, int y, t_fractol *f)
+{
+	t_complex	p;
+
+	p.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom + f->offset_x, WIDTH);
+	p.im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom + f->offset_y, HEIGHT);
+	return (p);
+}
+
 void	render_fractal(t_fractol *f)
 {
 	int			x;
@@ -65,10 +74,7 @@ void	render_fractal(t_fractol *f)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			p.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom
-					+ f->offset_x, WIDTH);
-			p.im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom
-					+ f->offset_y, HEIGHT);
+			p = ft_mapping(x, y, f);
 			nb_iter = get_fractal_iterations(f, &p);
 			color = colorize(nb_iter, f);
 			my_mlx_pixel_put(&f->img, x, y, color);
@@ -76,3 +82,4 @@ void	render_fractal(t_fractol *f)
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);
 }
+
