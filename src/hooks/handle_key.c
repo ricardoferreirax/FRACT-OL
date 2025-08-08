@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 22:01:59 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 16:15:36 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 19:55:21 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	handle_key_suite(int keycode, t_fractol *f)
 	if (keycode == KEY_C)
 	{
 		f->color_mode = (f->color_mode + 1) % 4;
-		update_color_table(f);
+		update_color(f);
 	}
 	else if (keycode == KEY_H)
 	{
@@ -38,7 +38,7 @@ static void	handle_key_iterations(int keycode, t_fractol *f)
 		if (f->c_max_iter < ITER_TRESHOLD)
 		{
 			f->c_max_iter += 10;
-			update_color_table(f);
+			update_color(f);
 		}
 		else
 			ft_putstr("Maximum iterations reached!\n");
@@ -48,7 +48,7 @@ static void	handle_key_iterations(int keycode, t_fractol *f)
 		if (f->c_max_iter > 0)
 		{
 			f->c_max_iter -= 10;
-			update_color_table(f);
+			update_color(f);
 		}
 		else
 			ft_putstr("Minimum iterations reached!\n");

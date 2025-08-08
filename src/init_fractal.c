@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:17:33 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 18:15:31 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 19:48:44 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ void	init_fractol(t_fractol *f)
 		exit_fractol(MLX_FAIL, f);
 	f->c_max_iter = MAX_ITER;
 	f->zoom = 1;
-	update_color_table(f);
+	update_color(f);
 }

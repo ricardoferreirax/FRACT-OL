@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 18:47:04 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 19:56:07 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,13 @@ void	    set_default_phoenix(t_fractol *f);
 void	    set_default_julia(t_fractol *f);
 
 /* Palettes */
-int			poli_gradiant(int iter, int max_iter);
-int			sin_tripy(int iter, int max_iter);
-int			fire_thing(int iter, int max_iter);
-int			purple_trip(int iter, int max_iter);
+int			polynomial_gradient(int iter, int max_iter);
+int	        sin_gradient(int iter, int max_iter);
+int			flame_gradient(int iter, int max_iter);
+int         ocean_gradient(int iter, int max_iter);
 
 int			colorize(int nb_iter, t_fractol *f);
-void		update_color_table(t_fractol *f);
+void		update_color(t_fractol *f);
 
 void		init_image(t_fractol *f);
 t_complex	ft_mapping(int x, int y, t_fractol *f);
