@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 17:58:01 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/08 18:10:31 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FRACTOL_H
 
 # include "../minilibx-linux/mlx.h"
+#include <X11/X.h>
+#include <X11/keysym.h>
 # include <stdlib.h>
 # include <math.h>
 # include <unistd.h>
