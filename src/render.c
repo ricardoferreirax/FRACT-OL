@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 18:51:44 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/10 22:40:38 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void my_mlx_pixel_put(t_img *img, int x, int y, int color)
     }
 }
 
-int	get_fractal_iterations(t_fractol *f, t_complex *p)
+int	fractal_escape_time(t_fractol *f, t_complex *p)
 {
 	int			nb_iter;
 	t_complex	c;
@@ -75,7 +75,7 @@ void	render_fractal(t_fractol *f)
 		while (++x < WIDTH)
 		{
 			c_point = ft_mapping(x, y, f);
-			nb_iter = get_fractal_iterations(f, &c_point);
+			nb_iter = fractal_escape_time(f, &c_point);
 			color = colorize(nb_iter, f);
 			my_mlx_pixel_put(&f->img, x, y, color);
 		}
