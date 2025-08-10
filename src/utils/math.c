@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:32:00 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/05 09:49:31 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/10 22:41:24 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ t_complex	c_mult(t_complex a, t_complex b)
 	res.re = a.re * b.re - a.im * b.im;
 	res.im = a.re * b.im + a.im * b.re;
 	return (res);
+}
+
+t_complex	ft_mapping(int x, int y, t_fractol *f)
+{
+	t_complex	c_point;
+
+	c_point.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom + f->offset_x, WIDTH);
+	c_point.im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom + f->offset_y, HEIGHT);
+	return (c_point);
 }
 
 double	ft_abs(double x)

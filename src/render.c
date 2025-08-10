@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/10 22:40:38 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/10 22:41:09 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,6 @@ int	fractal_escape_time(t_fractol *f, t_complex *p)
 	else if (ft_strcmp(f->type, "phoenix") == 0)
 		nb_iter = phoenix(c, f->pv.p, f->pv.c, f->c_max_iter);
 	return (nb_iter);
-}
-
-t_complex	ft_mapping(int x, int y, t_fractol *f)
-{
-	t_complex	c_point;
-
-	c_point.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom + f->offset_x, WIDTH);
-	c_point.im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom + f->offset_y, HEIGHT);
-	return (c_point);
 }
 
 void	render_fractal(t_fractol *f)
