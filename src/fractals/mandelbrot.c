@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:21:54 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/17 20:43:37 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/17 20:57:16 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	mandelbrot(t_complex c, int c_max_iter)
 	t_complex	z;
 	int			nb_iter;
 
-	i = 0;
+	nb_iter = 0;
 	z.re = 0;
 	z.im = 0;
 	while (nb_iter < c_max_iter && (z.re * z.re + z.im * z.im) <= 4.0)
