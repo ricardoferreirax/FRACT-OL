@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/10 22:41:09 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/17 15:08:00 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ void my_mlx_pixel_put(t_img *img, int x, int y, int color)
     }
 }
 
-int	fractal_escape_time(t_fractol *f, t_complex *p)
+int	fractal_escape_time(t_fractol *f, t_complex *c_point)
 {
 	int			nb_iter;
 	t_complex	c;
 
 	nb_iter = 0;
-	c.re = p->re;
-	c.im = p->im;
+	c.re = c_point->re;
+	c.im = c_point->im;
 	if (ft_strcmp(f->type, "mandelbrot") == 0)
 		nb_iter = mandelbrot(c, f->c_max_iter);
 	else if (ft_strcmp(f->type, "julia") == 0)
 	{
 		c.re = f->julia_re;
 		c.im = f->julia_im;
-		nb_iter = julia(c, *p, f->c_max_iter);
+		nb_iter = julia(c, *c_point, f->c_max_iter);
 	}
 	else if (ft_strcmp(f->type, "burningship") == 0)
 		nb_iter = burning_ship(c, f->c_max_iter);
