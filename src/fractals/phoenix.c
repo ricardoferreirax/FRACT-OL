@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:33:10 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/05 09:50:45 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/17 20:56:30 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ int	phoenix(t_complex z, t_complex p, t_complex c, int c_max_iter)
 {
 	t_complex	z_prev;
 	t_complex	z_next;
-	int			i;
+	int			nb_iter;
 
-	i = 0;
+	nb_iter = 0;
 	z_prev.re = 0;
 	z_prev.im = 0;
-	while (i < c_max_iter && (z.re * z.re + z.im * z.im) <= 4.0)
+	while (nb_iter < c_max_iter && (z.re * z.re + z.im * z.im) <= 4.0)
 	{
 		z_next = c_add(c_add(c_mult(z, z), c_mult(p, z_prev)), c);
 		z_prev = z;
 		z = z_next;
-		i++;
+		nb_iter++;
 	}
-	return (i);
+	return (nb_iter);
 }
 
 void	set_default_phoenix(t_fractol *f)
