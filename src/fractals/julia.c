@@ -6,7 +6,7 @@
 /*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:53:58 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/05 09:50:38 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/17 20:45:34 by rmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	julia(t_complex c, t_complex z, int c_max_iter)
 {
-	int	i;
+	int	nb_iter;
 
-	i = 0;
-	while (i < c_max_iter && (z.re * z.re + z.im * z.im) <= 4.0)
+	nb_iter = 0;
+	while (nb_iter < c_max_iter && (z.re * z.re + z.im * z.im) <= 4.0)
 	{
 		z = c_add(c_mult(z, z), c);
-		i++;
+		nb_iter++;
 	}
-	return (i);
+	return (nb_iter);
 }
 
 void	set_default_julia(t_fractol *f)
