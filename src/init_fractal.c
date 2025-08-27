@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:17:33 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 19:48:44 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/27 18:56:03 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ void	init_defaults(t_fractol *f)
 	f->offset_y = 0;
 	f->julia_re = 0;
 	f->julia_im = 0;
-	f->pv.p.re = 0;
-	f->pv.p.im = 0;
-	f->pv.c.re = 0;
-	f->pv.c.im = 0;
 }
 
 void	init_image(t_fractol *f)

@@ -1,5 +1,7 @@
 {
-    "files.associations": {
-        "fractol.h": "c"
-    }
+  "files.autoSave": "afterDelay",
+  "editor.tabSize": 4,
+  "[c]": {
+    "editor.defaultFormatter": "keyhr.42-c-format"
+  }
 }

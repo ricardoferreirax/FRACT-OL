@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/19 20:48:23 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/27 18:56:21 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ int	fractal_escape_time(t_fractol *f, t_complex *c_point)
 	}
 	else if (ft_strcmp(f->type, "burningship") == 0)
 		nb_iter = burning_ship(c, f->c_max_iter);
-	else if (ft_strcmp(f->type, "phoenix") == 0)
-		nb_iter = phoenix(c, f->pv.p, f->pv.c, f->c_max_iter);
 	return (nb_iter);
 }
 

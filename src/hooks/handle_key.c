@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_key.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 22:01:59 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 19:55:21 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/27 18:55:36 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ static void	handle_key_suite(int keycode, t_fractol *f)
 	{
 		ft_putstr("\nCommands :\n");
 		ft_putstr(" - Zoom with mouse and move with arrows or WASD\n");
-        ft_putstr(" - Press J (Julia), M (Mandelbrot), B (Burning) or P to");
-        ft_putstr ("change the fractal\n");
+        ft_putstr(" - Press J (Julia), M (Mandelbrot) or B (Burning)\n");
 		ft_putstr(" - Press O and I to increase or decrease precision\n");
 		ft_putstr(" - Press C to change color\n");
 		ft_putstr(" - Press ESC to quit\n");
@@ -73,12 +72,6 @@ static void	handle_fractal_keys(int keycode, t_fractol *f)
 	    f->type = "julia";
 	    set_default_julia(f);
     }
-	else if (keycode == KEY_P)
-	{
-		ft_putstr("Switched to Phoenix\n");
-	    f->type = "phoenix";
-	    set_default_phoenix(f);
-	}
 }
 
 int	handle_key(int keycode, void *param)

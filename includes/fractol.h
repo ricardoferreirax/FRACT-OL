@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 19:56:07 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/27 19:03:38 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,14 @@
 # define WIDTH 800
 # define HEIGHT 800
 
-/* Misc */
 # define MAX_ITER 50
 # define ITER_TRESHOLD 310
 
-/* Err Codes */
 # define QUIT 0
 # define INPUT 1
 # define MALLOC 2
 # define MLX_FAIL 3
 
-/* KEYS */
 # define KEY_RED_CROSS 17
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -69,7 +66,6 @@ static inline void fractol_linux_cleanup(void *mlx)
 }
 #endif
 
-/* COLORS */
 # define BLACK   0xFF000000
 
 typedef struct s_pixel
@@ -83,12 +79,6 @@ typedef struct s_complex
 	double	re;
 	double	im;
 }			t_complex;
-
-typedef struct s_phoenix
-{
-	t_complex	p;
-	t_complex	c;
-}				t_phoenix;
 
 typedef struct s_img
 {
@@ -113,7 +103,6 @@ typedef struct s_fractol
 	double		offset_y;
 	double		julia_re;
 	double		julia_im;
-	t_phoenix	pv;
 }				t_fractol;
 
 /* Maths */
@@ -130,9 +119,7 @@ void		init_fractol(t_fractol *f);
 int			mandelbrot(t_complex c, int c_max_iter);
 int			julia(t_complex c, t_complex z, int c_max_iter);
 int			burning_ship(t_complex c, int c_max_iter);
-int			phoenix(t_complex z, t_complex k, t_complex c, int c_max_iter);
 
-void	    set_default_phoenix(t_fractol *f);
 void	    set_default_julia(t_fractol *f);
 
 /* Palettes */
@@ -150,7 +137,7 @@ void		render_fractal(t_fractol *f);
 void		exit_fractol(int errcode, t_fractol *f);
 void        free_fractol(t_fractol *f);
 void	    my_mlx_pixel_put(t_img *img, int x, int y, int color);
-int	        get_fractal_iterations(t_fractol *f, t_complex *p);
+int			fractal_escape_time(t_fractol *f, t_complex *c_point);
 
 int		    handle_close(void *param);
 int	        handle_key(int keycode, void *param);
