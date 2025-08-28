@@ -6,7 +6,7 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 08:45:36 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/28 17:28:12 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 19:42:29 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int	sin_gradient(int iter, int max_iter)
 	int		g;
 	int		b;
 
-	freq = 0.07;
-	amp = 110;
+	freq = 0.085;
+	amp = 120.0;
 	if (iter == max_iter)
 		return (0x000000);
-	r = (int)(sin(freq * iter + 0.0) * amp + 128);
-	g = (int)(sin(freq * iter + 2.1) * amp + 128);
-	b = (int)(sin(freq * iter + 4.2) * amp + 128);
+	r = (int)(sin(freq * iter + 0.00) * (1.00 * amp) + 128.0);
+	g = (int)(sin(freq * iter + 2.20) * (0.60 * amp) + 128.0);
+	b = (int)(sin(freq * iter + 0.40) * (1.00 * amp) + 128.0);
 	return ((r << 16) | (g << 8) | b);
 }
 
@@ -64,16 +64,18 @@ int	flame_gradient(int iter, int max_iter)
 
 int	ocean_gradient(int iter, int max_iter)
 {
+	double	freq;
+	double	amp;
 	int		r;
 	int		g;
 	int		b;
-	double	t;
 
-	if (iter >= max_iter)
+	freq = 0.060;
+	amp = 120.0;
+	if (iter == max_iter)
 		return (0x000000);
-	t = (double)iter / (double)max_iter;
-	r = (int)(t * 50);
-	g = (int)(t * 200 + 30);
-	b = (int)(t * 255);
+	r = (int)(sin(freq * iter + 2.40) * (0.45 * amp) + 128.0);
+	g = (int)(sin(freq * iter + 0.00) * (1.10 * amp) + 128.0);
+	b = (int)(sin(freq * iter + 4.10) * (0.80 * amp) + 128.0);
 	return ((r << 16) | (g << 8) | b);
 }

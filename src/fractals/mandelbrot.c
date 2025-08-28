@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:21:54 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/19 20:48:09 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:14:24 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fractol.h"
 
-int	mandelbrot(t_complex c, int c_max_iter)
+int	mandelbrot(t_cpx c, int c_max_iter)
 {
-	t_complex	z;
-	int			nb_iter;
+	t_cpx	z;
+	int		nb_iter;
 
 	nb_iter = 0;
 	z.re = 0;

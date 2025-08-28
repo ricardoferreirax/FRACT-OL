@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:18:53 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 19:56:24 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:44:02 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

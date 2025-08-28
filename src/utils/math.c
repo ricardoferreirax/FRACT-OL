@@ -6,33 +6,33 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:32:00 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/28 17:18:38 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 19:06:15 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fractol.h"
 
-t_complex	c_add(t_complex a, t_complex b)
+t_cpx	c_add(t_cpx a, t_cpx b)
 {
-	t_complex	res;
+	t_cpx	res;
 
 	res.re = a.re + b.re;
 	res.im = a.im + b.im;
 	return (res);
 }
 
-t_complex	c_mult(t_complex a, t_complex b)
+t_cpx	c_mult(t_cpx a, t_cpx b)
 {
-	t_complex	res;
+	t_cpx	res;
 
 	res.re = a.re * b.re - a.im * b.im;
 	res.im = a.re * b.im + a.im * b.re;
 	return (res);
 }
 
-t_complex	ft_mapping(int x, int y, t_fractol *f)
+t_cpx	ft_mapping(int x, int y, t_fractol *f)
 {
-	t_complex	c_point;
+	t_cpx	c_point;
 
 	c_point.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom
 			+ f->offset_x, WIDTH);

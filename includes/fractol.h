@@ -6,7 +6,7 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/28 18:52:24 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 19:43:49 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,11 @@ static inline void	fractol_linux_cleanup(void *mlx)
 
 # define BLACK   0xFF000000
 
-typedef struct s_pixel
-{
-	double	x;
-	double	y;
-}			t_pixel;
-
 typedef struct s_complex
 {
 	double	re;
 	double	im;
-}			t_complex;
+}			t_cpx;
 
 typedef struct s_img
 {
@@ -107,21 +101,21 @@ typedef struct s_fractol
 	double		julia_im;
 }				t_fractol;
 
-t_complex	c_add(t_complex a, t_complex b);
-t_complex	c_mult(t_complex a, t_complex b);
-t_complex	ft_mapping(int x, int y, t_fractol *f);
+t_cpx	c_add(t_cpx a, t_cpx b);
+t_cpx	c_mult(t_cpx a, t_cpx b);
+t_cpx	ft_mapping(int x, int y, t_fractol *f);
 double	ft_abs(double x);
 double	scale(double to_scale, double n_min, double n_max, double o_max);
 double	ft_atof(const char *str);
-int		mandelbrot(t_complex c, int c_max_iter);
-int		julia(t_complex c, t_complex z, int c_max_iter);
-int		burning_ship(t_complex c, int c_max_iter);
+int		mandelbrot(t_cpx c, int c_max_iter);
+int		julia(t_cpx c, t_cpx z, int c_max_iter);
+int		burning_ship(t_cpx c, int c_max_iter);
 int		polynomial_gradient(int iter, int max_iter);
 int		sin_gradient(int iter, int max_iter);
 int		flame_gradient(int iter, int max_iter);
 int		ocean_gradient(int iter, int max_iter);
 int		colorize(int nb_iter, t_fractol *f);
-int		fractal_escape_time(t_fractol *f, t_complex *c_point);
+int		fractal_escape_time(t_fractol *f, t_cpx *c_point);
 int		handle_close(void *param);
 int		handle_key(int keycode, void *param);
 int		handle_mouse_key(int keycode, int x, int y, void *param);

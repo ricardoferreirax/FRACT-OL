@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:35:16 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/19 20:48:43 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:14:40 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fractol.h"
 
-int	burning_ship(t_complex c, int c_max_iter)
+int	burning_ship(t_cpx c, int c_max_iter)
 {
-	t_complex	z;
-	int			nb_iter;
+	t_cpx	z;
+	int		nb_iter;
 
 	nb_iter = 0;
 	z.re = 0;

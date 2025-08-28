@@ -6,7 +6,7 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/28 17:06:03 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 19:13:58 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	}
 }
 
-int	fractal_escape_time(t_fractol *f, t_complex *c_point)
+int	fractal_escape_time(t_fractol *f, t_cpx *c_point)
 {
-	int			nb_iter;
-	t_complex	c;
+	t_cpx	c;
+	int		nb_iter;
 
 	nb_iter = 0;
 	c.re = c_point->re;
@@ -51,7 +51,7 @@ void	render_fractal(t_fractol *f)
 	int			x;
 	int			y;
 	int			nb_iter;
-	t_complex	c_point;
+	t_cpx		c_point;
 	int			color;
 
 	if (f->img.img)

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:53:58 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/19 20:47:54 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:04:23 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fractol.h"
 
-int	julia(t_complex c, t_complex z, int c_max_iter)
+int	julia(t_cpx c, t_cpx z, int c_max_iter)
 {
 	int	nb_iter;
 
