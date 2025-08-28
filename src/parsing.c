@@ -6,11 +6,38 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:55:11 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/27 18:54:10 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 17:12:06 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+static int	is_simple_number(const char *s)
+{
+	int	digits;
+	int	dots;
+
+	digits = 0;
+	dots = 0;
+	if (!*s)
+		return (0);
+	if (*s == '+' || *s == '-')
+		s++;
+	while (*s)
+	{
+		if (*s >= '0' && *s <= '9')
+			digits++;
+		else if (*s == '.')
+		{
+			if (++dots > 1)
+				return (0);
+		}
+		else
+			return (0);
+		s++;
+	}
+	return (digits > 0);
+}
 
 static int	ft_isdigit(int c)
 {
@@ -47,42 +74,13 @@ double	ft_atof(const char *str)
 	return (sign * nmb / power);
 }
 
-static int is_simple_number(const char *s)
-{
-    int digits;
-    int dots;
-
-	digits = 0;
-	dots = 0;
-    if (!s || !*s)
-        return 0;
-    if (*s == '+' || *s == '-')
-        s++;
-    if (!*s)
-        return 0;
-    while (*s)
-    {
-        if (*s >= '0' && *s <= '9')
-            digits++;
-        else if (*s == '.')
-        {
-            if (++dots > 1)
-                return (0);
-        }
-        else
-            return (0);
-        s++;
-    }
-    return (digits > 0);
-}
-
 static int	check_julia(char **av)
 {
 	double	a;
 	double	b;
-	
+
 	if (!is_simple_number(av[2]) || !is_simple_number(av[3]))
-        return (0);
+		return (0);
 	a = ft_atof(av[2]);
 	b = ft_atof(av[3]);
 	if ((a >= -2.0 && a <= 2.0) && (b >= -2.0 && b <= 2.0))

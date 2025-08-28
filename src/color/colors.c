@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 08:45:36 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 19:55:58 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:28:12 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	polynomial_gradient(int iter, int max_iter)
 
 int	sin_gradient(int iter, int max_iter)
 {
-	int	r;
-	int	g;
-	int	b;
-    double freq;
-    double amp;
+	double	freq;
+	double	amp;
+	int		r;
+	int		g;
+	int		b;
 
-    freq = 0.07;
-    amp = 110;
+	freq = 0.07;
+	amp = 110;
 	if (iter == max_iter)
 		return (0x000000);
 	r = (int)(sin(freq * iter + 0.0) * amp + 128);
@@ -62,18 +62,18 @@ int	flame_gradient(int iter, int max_iter)
 	return ((r << 16) | (g << 8) | b);
 }
 
-int ocean_gradient(int iter, int max_iter)
+int	ocean_gradient(int iter, int max_iter)
 {
-    int r;
-    int g;
-    int b;
-    double t;
-    
-    if (iter >= max_iter)
-        return 0x000000;
-    t = (double)iter / (double)max_iter;
-    r = (int)(t * 50);
-    g = (int)(t * 200 + 30);
-    b = (int)(t * 255);
-    return ((r << 16) | (g << 8) | b);
+	int		r;
+	int		g;
+	int		b;
+	double	t;
+
+	if (iter >= max_iter)
+		return (0x000000);
+	t = (double)iter / (double)max_iter;
+	r = (int)(t * 50);
+	g = (int)(t * 200 + 30);
+	b = (int)(t * 255);
+	return ((r << 16) | (g << 8) | b);
 }

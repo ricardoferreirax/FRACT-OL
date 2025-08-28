@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_close.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 11:11:53 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 16:17:49 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:19:29 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	handle_close(void *param)
 {
-    t_fractol *f;
+	t_fractol	*f;
 
-    f = (t_fractol *)param;
+	f = (t_fractol *)param;
 	exit_fractol(0, f);
-    return (0);
+	return (0);
 }

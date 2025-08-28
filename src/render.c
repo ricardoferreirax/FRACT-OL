@@ -6,23 +6,23 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:23:34 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/27 18:56:21 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 17:06:03 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-    char *dst;
-    int offset;
+	char	*dst;
+	int		offset;
 
-    if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-    {
-        offset = (y * img->line_length) + (x * (img->bits_per_pixel / 8));
-        dst = img->addr + offset;
-        *(unsigned int *)dst = color;
-    }
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		offset = (y * img->line_length) + (x * (img->bits_per_pixel / 8));
+		dst = img->addr + offset;
+		*(unsigned int *)dst = color;
+	}
 }
 
 int	fractal_escape_time(t_fractol *f, t_complex *c_point)

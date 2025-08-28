@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:21:41 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/08 16:10:21 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:03:22 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(int ac, char **av)
 	ft_putstr("Program launched, press h for help\n");
 	render_fractal(&f);
 	mlx_key_hook(f.win, handle_key, &f);
-    mlx_mouse_hook(f.win, handle_mouse_key, &f);
-    mlx_hook(f.win, 17, 0, handle_close, &f);
+	mlx_mouse_hook(f.win, handle_mouse_key, &f);
+	mlx_hook(f.win, 17, 0, handle_close, &f);
 	mlx_loop(f.mlx);
-    return (0);
+	return (0);
 }

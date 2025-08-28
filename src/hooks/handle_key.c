@@ -6,7 +6,7 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 22:01:59 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/27 18:55:36 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 17:21:40 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	handle_key_suite(int keycode, t_fractol *f)
 	{
 		ft_putstr("\nCommands :\n");
 		ft_putstr(" - Zoom with mouse and move with arrows or WASD\n");
-        ft_putstr(" - Press J (Julia), M (Mandelbrot) or B (Burning)\n");
+		ft_putstr(" - Press J (Julia), M (Mandelbrot) or B (Burning)\n");
 		ft_putstr(" - Press O and I to increase or decrease precision\n");
 		ft_putstr(" - Press C to change color\n");
 		ft_putstr(" - Press ESC to quit\n");
@@ -67,18 +67,18 @@ static void	handle_fractal_keys(int keycode, t_fractol *f)
 		f->type = "mandelbrot";
 	}
 	else if (keycode == KEY_J)
-    {
-	    ft_putstr("Switched to Julia\n");
-	    f->type = "julia";
-	    set_default_julia(f);
-    }
+	{
+		ft_putstr("Switched to Julia\n");
+		f->type = "julia";
+		set_default_julia(f);
+	}
 }
 
 int	handle_key(int keycode, void *param)
 {
-    t_fractol *f;
+	t_fractol	*f;
 
-    f = (t_fractol *)param;
+	f = (t_fractol *)param;
 	if (keycode == KEY_ESC)
 		exit_fractol(QUIT, f);
 	else if (keycode == KEY_W || keycode == KEY_UP)
@@ -89,8 +89,8 @@ int	handle_key(int keycode, void *param)
 		f->offset_y += 0.4 * f->zoom;
 	else if (keycode == KEY_D || keycode == KEY_RIGHT)
 		f->offset_x += 0.4 * f->zoom;
-    handle_fractal_keys(keycode, f); 
-    handle_key_iterations(keycode, f);
+	handle_fractal_keys(keycode, f);
+	handle_key_iterations(keycode, f);
 	handle_key_suite(keycode, f);
 	render_fractal(f);
 	return (0);

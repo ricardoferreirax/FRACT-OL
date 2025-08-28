@@ -6,7 +6,7 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/27 19:03:38 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 17:39:13 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FRACTOL_H
 
 # include "../minilibx-linux/mlx.h"
-#include <X11/X.h>
-#include <X11/keysym.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <stdlib.h>
 # include <math.h>
 # include <unistd.h>
@@ -57,14 +57,17 @@
 # define KEY_O 111
 
 /* Cleanup Linux */
-#ifdef __linux__
-void fractol_linux_cleanup(void *mlx);
-#else
-static inline void fractol_linux_cleanup(void *mlx)
+# ifndef __linux__
+
+void	fractol_linux_cleanup(void *mlx);
+
+# else
+
+static inline void	fractol_linux_cleanup(void *mlx)
 {
-    (void)mlx; // função vazia em outras plataformas
+	(void)mlx;
 }
-#endif
+# endif
 
 # define BLACK   0xFF000000
 
@@ -105,48 +108,35 @@ typedef struct s_fractol
 	double		julia_im;
 }				t_fractol;
 
-/* Maths */
 t_complex	c_add(t_complex a, t_complex b);
 t_complex	c_mult(t_complex a, t_complex b);
-double	    ft_abs(double x);
-double		scale(double to_scale, double n_min, double n_max, double o_max);
-
-/* Init */
-void	    init_defaults(t_fractol *f);
-void		init_fractol(t_fractol *f);
-
-/* Fractals */
-int			mandelbrot(t_complex c, int c_max_iter);
-int			julia(t_complex c, t_complex z, int c_max_iter);
-int			burning_ship(t_complex c, int c_max_iter);
-
-void	    set_default_julia(t_fractol *f);
-
-/* Palettes */
-int			polynomial_gradient(int iter, int max_iter);
-int	        sin_gradient(int iter, int max_iter);
-int			flame_gradient(int iter, int max_iter);
-int         ocean_gradient(int iter, int max_iter);
-
-int			colorize(int nb_iter, t_fractol *f);
-void		update_color(t_fractol *f);
-
-void		init_image(t_fractol *f);
 t_complex	ft_mapping(int x, int y, t_fractol *f);
-void		render_fractal(t_fractol *f);
-void		exit_fractol(int errcode, t_fractol *f);
-void        free_fractol(t_fractol *f);
-void	    my_mlx_pixel_put(t_img *img, int x, int y, int color);
-int			fractal_escape_time(t_fractol *f, t_complex *c_point);
-
-int		    handle_close(void *param);
-int	        handle_key(int keycode, void *param);
-int		    handle_mouse_key(int keycode, int x, int y, void *param);
-
-void	    check_input(t_fractol *f, int ac, char **av);
-double	    ft_atof(const char *str);
-
-void	    ft_putstr(char *s);
-int	        ft_strcmp(const char *s1, const char *s2);
+double	ft_abs(double x);
+double	scale(double to_scale, double n_min, double n_max, double o_max);
+double	ft_atof(const char *str);
+int	mandelbrot(t_complex c, int c_max_iter);
+int	julia(t_complex c, t_complex z, int c_max_iter);
+int	burning_ship(t_complex c, int c_max_iter);
+int	polynomial_gradient(int iter, int max_iter);
+int	sin_gradient(int iter, int max_iter);
+int	flame_gradient(int iter, int max_iter);
+int	ocean_gradient(int iter, int max_iter);
+int	colorize(int nb_iter, t_fractol *f);
+int	fractal_escape_time(t_fractol *f, t_complex *c_point);
+int	handle_close(void *param);
+int	handle_key(int keycode, void *param);
+int	handle_mouse_key(int keycode, int x, int y, void *param);
+int	ft_strcmp(const char *s1, const char *s2);
+void	update_color(t_fractol *f);
+void	set_default_julia(t_fractol *f);
+void	init_image(t_fractol *f);
+void	render_fractal(t_fractol *f);
+void	exit_fractol(int errcode, t_fractol *f);
+void	free_fractol(t_fractol *f);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	check_input(t_fractol *f, int ac, char **av);
+void	ft_putstr(char *s);
+void	init_defaults(t_fractol *f);
+void	init_fractol(t_fractol *f);
 
 #endif

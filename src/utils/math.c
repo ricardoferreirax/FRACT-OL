@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmedeiro <rmedeiro@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:32:00 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/10 22:41:24 by rmedeiro         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:18:38 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ t_complex	ft_mapping(int x, int y, t_fractol *f)
 {
 	t_complex	c_point;
 
-	c_point.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom + f->offset_x, WIDTH);
-	c_point.im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom + f->offset_y, HEIGHT);
+	c_point.re = scale(x, -2.0 * f->zoom + f->offset_x, 2.0 * f->zoom
+			+ f->offset_x, WIDTH);
+	c_point.im = scale(y, -2.0 * f->zoom + f->offset_y, 2.0 * f->zoom
+			+ f->offset_y, HEIGHT);
 	return (c_point);
 }
 
