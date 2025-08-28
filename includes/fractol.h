@@ -6,7 +6,7 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/28 17:39:13 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 17:45:54 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@
 # define KEY_R 114
 # define KEY_O 111
 
-/* Cleanup Linux */
 # ifndef __linux__
 
 void	fractol_linux_cleanup(void *mlx);
