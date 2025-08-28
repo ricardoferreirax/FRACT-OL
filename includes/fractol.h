@@ -6,7 +6,7 @@
 /*   By: rickymercury <rickymercury@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:32:32 by rmedeiro          #+#    #+#             */
-/*   Updated: 2025/08/28 17:45:54 by rickymercur      ###   ########.fr       */
+/*   Updated: 2025/08/28 18:52:24 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,19 +113,19 @@ t_complex	ft_mapping(int x, int y, t_fractol *f);
 double	ft_abs(double x);
 double	scale(double to_scale, double n_min, double n_max, double o_max);
 double	ft_atof(const char *str);
-int	mandelbrot(t_complex c, int c_max_iter);
-int	julia(t_complex c, t_complex z, int c_max_iter);
-int	burning_ship(t_complex c, int c_max_iter);
-int	polynomial_gradient(int iter, int max_iter);
-int	sin_gradient(int iter, int max_iter);
-int	flame_gradient(int iter, int max_iter);
-int	ocean_gradient(int iter, int max_iter);
-int	colorize(int nb_iter, t_fractol *f);
-int	fractal_escape_time(t_fractol *f, t_complex *c_point);
-int	handle_close(void *param);
-int	handle_key(int keycode, void *param);
-int	handle_mouse_key(int keycode, int x, int y, void *param);
-int	ft_strcmp(const char *s1, const char *s2);
+int		mandelbrot(t_complex c, int c_max_iter);
+int		julia(t_complex c, t_complex z, int c_max_iter);
+int		burning_ship(t_complex c, int c_max_iter);
+int		polynomial_gradient(int iter, int max_iter);
+int		sin_gradient(int iter, int max_iter);
+int		flame_gradient(int iter, int max_iter);
+int		ocean_gradient(int iter, int max_iter);
+int		colorize(int nb_iter, t_fractol *f);
+int		fractal_escape_time(t_fractol *f, t_complex *c_point);
+int		handle_close(void *param);
+int		handle_key(int keycode, void *param);
+int		handle_mouse_key(int keycode, int x, int y, void *param);
+int		ft_strcmp(const char *s1, const char *s2);
 void	update_color(t_fractol *f);
 void	set_default_julia(t_fractol *f);
 void	init_image(t_fractol *f);
